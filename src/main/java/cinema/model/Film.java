@@ -1,19 +1,23 @@
 package cinema.model;
 
+import java.util.ArrayList;
+
 public class Film {
 
 	private int idf;
 	private String titre;
 	private int annee;
 	private String genre;
+	public ArrayList <Acteur> Actor = new ArrayList<>();
 	
-	
-	public Film(int idf, String titre, int annee, String genre) {
+
+	public Film(int idf, String titre, int annee, String genre, ArrayList<Acteur> actor) {
 		super();
 		this.idf = idf;
 		this.titre = titre;
 		this.annee = annee;
 		this.genre = genre;
+		Actor = actor;
 	}
 
 
