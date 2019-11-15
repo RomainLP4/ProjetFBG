@@ -2,16 +2,16 @@ package cinema.model;
 
 import java.util.ArrayList;
 
-public class Film {
+public class Films {
 
 	private int idf;
 	private String titre;
 	private int annee;
 	private String genre;
-	public ArrayList <Acteur> Actor = new ArrayList<>();
+	public ArrayList <Acteurs> Actor = new ArrayList<>();
 	
 
-	public Film(int idf, String titre, int annee, String genre, ArrayList<Acteur> actor) {
+	public Films(int idf, String titre, int annee, String genre, ArrayList<Acteurs> actor) {
 		super();
 		this.idf = idf;
 		this.titre = titre;

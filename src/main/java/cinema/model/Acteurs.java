@@ -2,7 +2,7 @@ package cinema.model;
 
 import java.util.ArrayList;
 import java.util.List;
-public class Acteur {
+public class Acteurs {
 	
 	public int ida;
 	public String noms;
@@ -10,11 +10,11 @@ public class Acteur {
 	public int age;
 	public String nationalite;
 	public String sexe;
-	public ArrayList<Film> movies = new ArrayList<> ();
+	public ArrayList<Films> movies = new ArrayList<> ();
 	
 	
 	
-public Acteur(int ida, String noms, String prenoms, int age, String nationalite, String sexe, ArrayList<Film> movies) {
+public Acteurs(int ida, String noms, String prenoms, int age, String nationalite, String sexe, ArrayList<Films> movies) {
 		super();
 		this.ida = ida;
 		this.noms = noms;
