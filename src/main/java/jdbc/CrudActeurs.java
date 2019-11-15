@@ -38,7 +38,7 @@ public class CrudActeurs
 		
 		etat.executeUpdate();
 	}
-	// update .
+	// update
 	public static void miseAJourTable (Connection connect, cinema.model.Acteur acteurModifier ) throws SQLException 
 	{
 		PreparedStatement etat = connect.prepareStatement("update " + UTILISATEUR_TABLE + "value IDa = ?, value Nom = ?, value Prenom = ?, value Age = ?, value Nationalite = ?, value Sexe = ? ");
