@@ -50,6 +50,7 @@ public class CrudActeurs
 		
 		etat.executeUpdate();
 	}
+	// delete
 	public static void suppressionDonnee (Connection connect, cinema.model.Acteur acteurSupprimer) throws SQLException 
 	{
 		PreparedStatement etat = connect.prepareStatement("delete " + UTILISATEUR_TABLE + "value IDa = ?, value Nom = ?, value Prenom = ?, value Age = ?, value Nationalite = ?, value Sexe = ? ");
