@@ -1,13 +1,15 @@
 package cinema.model;
 
+import java.util.List;
 public class Acteur {
 	
-	private int ida;
-	private String nom;
-	private String prenom;
-	private int age;
-	private String nationalite;
-	private String sex;
+	public int ida;
+	public String nom;
+	public String prenom;
+	public int age;
+	public String nationalite;
+	public String sex;
+	//public List<Film>;
 	
 	
 	public Acteur(int ida, String nom, String prenom, int age, String nationalite, String sex) {
