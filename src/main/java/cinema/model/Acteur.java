@@ -5,23 +5,23 @@ import java.util.List;
 public class Acteur {
 	
 	public int ida;
-	public String nom;
-	public String prenom;
+	public String noms;
+	public String prenoms;
 	public int age;
 	public String nationalite;
-	public String sex;
+	public String sexe;
 	public ArrayList<Film> movies = new ArrayList<> ();
 	
 	
 	
-public Acteur(int ida, String nom, String prenom, int age, String nationalite, String sex, ArrayList<Film> movies) {
+public Acteur(int ida, String noms, String prenoms, int age, String nationalite, String sexe, ArrayList<Film> movies) {
 		super();
 		this.ida = ida;
-		this.nom = nom;
-		this.prenom = prenom;
+		this.noms = noms;
+		this.prenoms = prenoms;
 		this.age = age;
 		this.nationalite = nationalite;
-		this.sex = sex;
+		this.sexe = sexe;
 		this.movies = movies;
 	}
 
@@ -47,23 +47,23 @@ public Acteur(int ida, String nom, String prenom, int age, String nationalite, S
 	}
 
 
-	public String getNom() {
-		return nom;
+	public String getNoms() {
+		return noms;
 	}
 
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setNoms(String noms) {
+		this.noms = noms;
 	}
 
 
-	public String getPrenom() {
-		return prenom;
+	public String getPrenoms() {
+		return prenoms;
 	}
 
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setPrenoms(String prenoms) {
+		this.prenoms = prenoms;
 	}
 
 
@@ -87,13 +87,13 @@ public Acteur(int ida, String nom, String prenom, int age, String nationalite, S
 	}
 
 
-	public String getSex() {
-		return sex;
+	public String getSexe() {
+		return sexe;
 	}
 
 
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
 	}
 	
 	
