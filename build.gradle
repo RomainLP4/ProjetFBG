@@ -30,3 +30,8 @@ dependencies {
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }
+
+application {
+    // Define the main class for the application
+    mainClassName = 'github.App'
+}
