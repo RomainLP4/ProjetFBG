@@ -7,10 +7,12 @@ public class CrudActeurs
 	public final static String ACTEUR_TABLE = "cinema.acteurs";
 	public final static String  FILM_TABLE = "cinema.films";
 	
+	
+	//READ
 	public static void afficherTable (Connection connect, String nomTableau) throws SQLException 
 	{
 		Statement etat = connect.createStatement();
-		String requete = "select from " + nomTableau;
+		String requete = "select * from " + nomTableau;
 		
 		ResultSet resultat = etat.executeQuery(requete);
 		ResultSetMetaData resultAutoReference = resultat.getMetaData();
@@ -27,6 +29,8 @@ public class CrudActeurs
 			System.out.println();
 		}		
 	}
+	
+	//CREATE
 	public static void creationActeur (Connection connect, cinema.model.Acteurs nvActeur) throws SQLException
 	{
 		PreparedStatement etat = connect.prepareStatement("insert into" + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value Prenoms = ?, value Age = ?, value Nationalite = ?, value Sexe = ? ");
@@ -39,7 +43,7 @@ public class CrudActeurs
 		
 		etat.executeUpdate();
 	}
-	// update
+	// UPDATE
 	public static void miseAJourTable (Connection connect, cinema.model.Acteurs acteurModifier ) throws SQLException 
 	{
 		PreparedStatement etat = connect.prepareStatement("update " + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value Prenoms = ?, value Age = ?, value Nationalite = ?, value Sexe = ? ");
@@ -52,7 +56,7 @@ public class CrudActeurs
 		
 		etat.executeUpdate();
 	}
-	// delete
+	// DELETE
 	public static void suppressionDonnee (Connection connect, cinema.model.Acteurs acteurSupprimer) throws SQLException 
 	{
 		PreparedStatement etat = connect.prepareStatement("delete " + ACTEUR_TABLE + "where IDa = ? ");
