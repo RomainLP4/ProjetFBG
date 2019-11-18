@@ -1,7 +1,7 @@
 package cinema.model;
 
 import java.util.ArrayList;
-import cinema.App;
+
 public class Acteur {
 	
 	public int ida;
