@@ -19,17 +19,34 @@ public class App {
 
 	public static String jsonFileName = "sample.json";
 
-	public void film(String titre) throws MalformedURLException, IOException {
-		// String url = "https://api.themoviedb.org/3/movie/123?api_key="+IMDB_KEY;//id
-		// de recherche apres movie/
-		String url = "https://api.themoviedb.org/3/search/movie?api_key=" + IMDB_KEY + "&query=" + titre;
-
+	public int idFilm(String titre) throws MalformedURLException, IOException 
+	{
+		//String url = "https://api.themoviedb.org/3/movie/123?api_key="+IMDB_KEY;//id de recherche apres movie/
+		String url = "https://api.themoviedb.org/3/search/movie?api_key="+IMDB_KEY+"&query="+titre;
 		String jsonText = IOUtils.toString(new URL(url), Charset.forName("UTF-8"));
 		writeJson(jsonText);
+		
+		JSONObject jsonComplet = new JSONObject(jsonText);
+		JSONArray main = jsonComplet.getJSONArray("results");
 
-		// JSONObject jsonComplet = new JSONObject(jsonText);
-		// JSONObject main = jsonComplet.getJSONObject("main");
-
+		int filmID = (int) main.getJSONObject(0).get("id");
+		return filmID;
+	}
+	
+	public void detailFilm(int filmID) throws MalformedURLException, IOException 
+	{
+		String urlDetailFilm = "https://api.themoviedb.org/3/movie/"+filmID+"?api_key="+IMDB_KEY+"&language=en-US";
+		
+		String jsonText = IOUtils.toString(new URL(urlDetailFilm), Charset.forName("UTF-8"));
+		writeJson(jsonText);
+		
+		JSONObject jsonComplet = new JSONObject(jsonText);
+		String date = jsonComplet.getString("release_date");
+		JSONArray genre = jsonComplet.getJSONArray("genres");
+		String genre1 = (String) genre.getJSONObject(0).get("name");
+		
+		System.out.println(date);
+		System.out.println(genre1);
 	}
 
 	public int acteur(String actor) throws MalformedURLException, IOException {
