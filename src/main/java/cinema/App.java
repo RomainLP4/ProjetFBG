@@ -42,11 +42,11 @@ public class App {
 		
 		JSONObject jsonComplet = new JSONObject(jsonText);
 		String date = jsonComplet.getString("release_date");
-		JSONArray genre = jsonComplet.getJSONArray("genres");
-		String genre1 = (String) genre.getJSONObject(0).get("name");
+		JSONArray genre1 = jsonComplet.getJSONArray("genres");
+		String genre = (String) genre1.getJSONObject(0).get("name");
 		
 		System.out.println(date);
-		System.out.println(genre1);
+		System.out.println(genre);
 	}
 
 	public int acteur(String actor) throws MalformedURLException, IOException {
@@ -132,6 +132,7 @@ public class App {
 		// System.out.println("l'id est "+actorID);
 		// System.out.println(test.acteur("Tom Cruise"));
 		test.actorDetails(test.acteur("tom cruise"));
+		test.detailFilm(test.idFilm("rocky 2"));
 	}
 
 }
