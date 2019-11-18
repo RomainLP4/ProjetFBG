@@ -32,7 +32,7 @@ public class App {
 		int filmID = (int) main.getJSONObject(0).get("id");
 		return filmID;
 	}
-	
+	// detail film
 	public void detailFilm(int filmID) throws MalformedURLException, IOException 
 	{
 		String urlDetailFilm = "https://api.themoviedb.org/3/movie/"+filmID+"?api_key="+IMDB_KEY+"&language=en-US";
