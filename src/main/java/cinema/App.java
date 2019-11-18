@@ -58,9 +58,10 @@ public class App {
 
 		JSONObject jsonComplet = new JSONObject(jsonText);
 		String name= jsonComplet.getString("name");
+		String birth=jsonComplet.getString("birthday");
 		
 		System.out.println(name);
-		
+		System.out.println(birth);
 
 		//String actorName = (String) main.getJSONObject(0).get("name");
 
