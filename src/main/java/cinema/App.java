@@ -15,9 +15,9 @@ import org.json.JSONObject;
 
 
 
-
 public class App {
-
+	public int actorID;
+	
 	private static String IMDB_KEY = "0e6260469751f4d597183df49e4810b2";
 
 	public static String jsonFileName = "sample.json";
@@ -37,10 +37,10 @@ public class App {
 	}
 	
 	
-	public static void acteur(String actor) throws MalformedURLException, IOException {
+	public static int acteur(String actor) throws MalformedURLException, IOException {
 		String urlActorID= "https://api.themoviedb.org/3/search/person?api_key="+IMDB_KEY+"&language=en-US&query="+actor+"&page=1&include_adult=false\r\n" + 
 				"";
-		//String urlActorDetail = "https://api.themoviedb.org/3/person/"+actor+"?api_key="+IMDB_KEY+"&language=en-US";
+		
 		
 		String jsonText = IOUtils.toString(new URL(urlActorID), Charset.forName("UTF-8"));
 		writeJson(jsonText);
@@ -50,9 +50,12 @@ public class App {
 		
 		
 		int actorID = (int) main.getJSONObject(0).get("id");
-		System.out.println(actorID);
-		//Acteurs Julia = new Acteurs (0, main.getString("actorID"), jsonText, 0, jsonText, jsonText, null)
-				//Meteo meteolouse=new Meteo(main.getDouble("temp"),main.getInt("humidity"),main.getInt("pressure"));
+		return actorID;
+		//System.out.println(actorID);
+		
+	}
+	public static void actorDetails (int actorID) {
+		String urlActorDetail = "https://api.themoviedb.org/3/person/"+actorID+"?api_key="+IMDB_KEY+"&language=en-US";
 	}
 	
 	public static void actorCast  (int actorid) throws MalformedURLException, IOException {
@@ -85,7 +88,7 @@ public class App {
 
 	public static void main(String[] args) throws MalformedURLException, IOException {
 		//film("Star wars");
-		acteur("julia roberts");
+		acteur("tom cruise");
 		//System.out.println("l'id est "+actorID);
 	}
 
