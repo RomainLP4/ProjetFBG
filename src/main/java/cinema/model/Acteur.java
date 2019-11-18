@@ -1,6 +1,7 @@
 package cinema.model;
 
 import java.util.ArrayList;
+import cinema.App;
 public class Acteur {
 	
 	public int ida;
@@ -20,6 +21,8 @@ public class Acteur {
 		this.lieuDeNaissance = lieuDeNaissance;
 		this.sexe = sexe;
 		this.movies = movies;
+		
+		
 	}
 
 
