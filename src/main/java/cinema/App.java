@@ -50,6 +50,8 @@ public class App {
 	}
 
 	public void actorDetails(int actorID) throws MalformedURLException, IOException {
+
+		String sexe;
 		String urlActorDetail = "https://api.themoviedb.org/3/person/" + actorID + "?api_key=" + IMDB_KEY
 				+ "&language=en-US";
 
@@ -57,13 +59,25 @@ public class App {
 		writeJson(jsonText);
 
 		JSONObject jsonComplet = new JSONObject(jsonText);
-		String name= jsonComplet.getString("name");
-		String birth=jsonComplet.getString("birthday");
-		
+		String name = jsonComplet.getString("name");
+		String birth = jsonComplet.getString("birthday");
+		String lieu = jsonComplet.getString("place_of_birth");
+		int gender = jsonComplet.getInt("gender");
+
+		if (gender == 1) {
+			sexe = "Femme";
+		} else if (gender == 2) {
+			sexe = "Homme";
+		}
+
+		else {
+			 sexe = "Inconnu";
+		}
+		System.out.println(lieu);
 		System.out.println(name);
 		System.out.println(birth);
+		System.out.println(sexe);
 
-		//String actorName = (String) main.getJSONObject(0).get("name");
 
 	}
 
@@ -97,7 +111,7 @@ public class App {
 	public static void main(String[] args) throws MalformedURLException, IOException {
 		App test = new App();
 		// film("Star wars");
-		 //test.acteur("tom cruise");
+		// test.acteur("tom cruise");
 		// System.out.println("l'id est "+actorID);
 		// System.out.println(test.acteur("Tom Cruise"));
 		test.actorDetails(test.acteur("tom cruise"));
