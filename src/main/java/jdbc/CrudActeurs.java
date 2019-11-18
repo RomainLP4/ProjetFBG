@@ -31,7 +31,7 @@ public class CrudActeurs
 	}
 	
 	//CREATE
-	public static void creationActeur (Connection connect, cinema.model.Acteurs nvActeur) throws SQLException
+	public static void creationActeur (Connection connect, cinema.model.Acteur nvActeur) throws SQLException
 	{
 		PreparedStatement etat = connect.prepareStatement("insert into" + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value DateDeNaissance = ?, value LieuDeNaissance = ?, value Sexe = ? ");
 		etat.setInt(1, nvActeur.getIda());
@@ -44,7 +44,7 @@ public class CrudActeurs
 		etat.close();
 	}
 	// UPDATE
-	public static void miseAJourTable (Connection connect, cinema.model.Acteurs acteurModifier ) throws SQLException 
+	public static void miseAJourTable (Connection connect, cinema.model.Acteur acteurModifier ) throws SQLException 
 	{
 		PreparedStatement etat = connect.prepareStatement("update " + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value DateDeNaissance = ?, value LieuDeNaissance = ?, value Sexe = ? ");
 		etat.setInt(1, acteurModifier.getIda());
@@ -57,7 +57,7 @@ public class CrudActeurs
 		etat.close();
 	}
 	// DELETE
-	public static void suppressionDonnee (Connection connect, cinema.model.Acteurs acteurSupprimer) throws SQLException 
+	public static void suppressionDonnee (Connection connect, cinema.model.Acteur acteurSupprimer) throws SQLException 
 	{
 		PreparedStatement etat = connect.prepareStatement("delete " + ACTEUR_TABLE + "where IDa = ? ");
 		etat.setInt(1, acteurSupprimer.getIda());

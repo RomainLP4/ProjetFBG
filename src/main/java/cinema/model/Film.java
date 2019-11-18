@@ -2,7 +2,7 @@ package cinema.model;
 
 import java.util.ArrayList;
 
-public class Films {
+public class Film {
 
 	private int idf;
 	private String titre;
@@ -11,7 +11,7 @@ public class Films {
 	
 	
 
-	public Films(int idf, String titre, int annee, String genre) {
+	public Film(int idf, String titre, int annee, String genre) {
 		super();
 		this.idf = idf;
 		this.titre = titre;

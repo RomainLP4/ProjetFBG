@@ -1,18 +1,18 @@
 package cinema.model;
 
 import java.util.ArrayList;
-public class Acteurs {
+public class Acteur {
 	
 	public int ida;
 	public String noms;
 	public String dateDeNaissance;
 	public String lieuDeNaissance;
 	public String sexe;
-	public ArrayList<Films> movies = new ArrayList<> ();
+	public ArrayList<Film> movies = new ArrayList<> ();
 	
 	
-	public Acteurs(int ida, String noms, String dateDeNaissance, String lieuDeNaissance, String sexe,
-			ArrayList<Films> movies) {
+	public Acteur(int ida, String noms, String dateDeNaissance, String lieuDeNaissance, String sexe,
+			ArrayList<Film> movies) {
 		super();
 		this.ida = ida;
 		this.noms = noms;
@@ -73,12 +73,12 @@ public class Acteurs {
 	}
 
 
-	public ArrayList<Films> getMovies() {
+	public ArrayList<Film> getMovies() {
 		return movies;
 	}
 
 
-	public void setMovies(ArrayList<Films> movies) {
+	public void setMovies(ArrayList<Film> movies) {
 		this.movies = movies;
 	}
 	

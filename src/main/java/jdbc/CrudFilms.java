@@ -32,7 +32,7 @@ public class CrudFilms {
 		
 		
 		//CREATE
-		public static void creationFilm (Connection connect, cinema.model.Films nvFilm) throws SQLException
+		public static void creationFilm (Connection connect, cinema.model.Film nvFilm) throws SQLException
 		{
 			PreparedStatement etat = connect.prepareStatement("insert into" + FILM_TABLE + "value Idf = ?, value Titre = ?, value Annee = ?, value Genre = ?");
 			etat.setInt(1, nvFilm.getIdf());
@@ -46,7 +46,7 @@ public class CrudFilms {
 		
 		
 		// UPDATE
-		public static void miseAJourTableFilm (Connection connect, cinema.model.Films filmModifier ) throws SQLException 
+		public static void miseAJourTableFilm (Connection connect, cinema.model.Film filmModifier ) throws SQLException 
 		{
 			PreparedStatement etat = connect.prepareStatement("update " + FILM_TABLE + "value Idf = ?, value Titre = ?, value Annee = ?, value Genre = ?");
 			etat.setInt(1, filmModifier.getIdf());
@@ -59,7 +59,7 @@ public class CrudFilms {
 		}	
 			
 		// DELETE
-		public static void suppressionDonneeFilm (Connection connect, cinema.model.Films filmSupprimer) throws SQLException 
+		public static void suppressionDonneeFilm (Connection connect, cinema.model.Film filmSupprimer) throws SQLException 
 		{
 			PreparedStatement etat = connect.prepareStatement("delete " + FILM_TABLE + "where Idf = ? ");
 			etat.setInt(1, filmSupprimer.getIdf());
