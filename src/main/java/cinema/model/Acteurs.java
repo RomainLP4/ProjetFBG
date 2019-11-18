@@ -5,35 +5,22 @@ public class Acteurs {
 	
 	public int ida;
 	public String noms;
-	public String prenoms;
-	public int age;
-	public String nationalite;
+	public String dateDeNaissance;
+	public String lieuDeNaissance;
 	public String sexe;
 	public ArrayList<Films> movies = new ArrayList<> ();
 	
 	
-	
-public Acteurs(int ida, String noms, String prenoms, int age, String nationalite, String sexe, ArrayList<Films> movies) {
+	public Acteurs(int ida, String noms, String dateDeNaissance, String lieuDeNaissance, String sexe,
+			ArrayList<Films> movies) {
 		super();
 		this.ida = ida;
 		this.noms = noms;
-		this.prenoms = prenoms;
-		this.age = age;
-		this.nationalite = nationalite;
+		this.dateDeNaissance = dateDeNaissance;
+		this.lieuDeNaissance = lieuDeNaissance;
 		this.sexe = sexe;
 		this.movies = movies;
 	}
-
-
-//	public Acteur(int ida, String nom, String prenom, int age, String nationalite, String sex) {
-//		super();
-//		this.ida = ida;
-//		this.nom = nom;
-//		this.prenom = prenom;
-//		this.age = age;
-//		this.nationalite = nationalite;
-//		this.sex = sex;
-//	}
 
 
 	public int getIda() {
@@ -56,33 +43,23 @@ public Acteurs(int ida, String noms, String prenoms, int age, String nationalite
 	}
 
 
-	public String getPrenoms() {
-		return prenoms;
+	public String getDateDeNaissance() {
+		return dateDeNaissance;
 	}
 
 
-	public void setPrenoms(String prenoms) {
-		this.prenoms = prenoms;
+	public void setDateDeNaissance(String dateDeNaissance) {
+		this.dateDeNaissance = dateDeNaissance;
 	}
 
 
-	public int getAge() {
-		return age;
+	public String getLieuDeNaissance() {
+		return lieuDeNaissance;
 	}
 
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-
-	public String getNationalite() {
-		return nationalite;
-	}
-
-
-	public void setNationalite(String nationalite) {
-		this.nationalite = nationalite;
+	public void setLieuDeNaissance(String lieuDeNaissance) {
+		this.lieuDeNaissance = lieuDeNaissance;
 	}
 
 
@@ -94,6 +71,18 @@ public Acteurs(int ida, String noms, String prenoms, int age, String nationalite
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
+
+
+	public ArrayList<Films> getMovies() {
+		return movies;
+	}
+
+
+	public void setMovies(ArrayList<Films> movies) {
+		this.movies = movies;
+	}
 	
 	
+	
+
 }

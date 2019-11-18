@@ -33,26 +33,28 @@ public class CrudActeurs
 	//CREATE
 	public static void creationActeur (Connection connect, cinema.model.Acteurs nvActeur) throws SQLException
 	{
-		PreparedStatement etat = connect.prepareStatement("insert into" + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value Age = ?, value Nationalite = ?, value Sexe = ? ");
+		PreparedStatement etat = connect.prepareStatement("insert into" + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value DateDeNaissance = ?, value LieuDeNaissance = ?, value Sexe = ? ");
 		etat.setInt(1, nvActeur.getIda());
 		etat.setString(2, nvActeur.getNoms());
-		etat.setInt(3, nvActeur.getAge());
-		etat.setString(4, nvActeur.getNationalite());
+		etat.setString(3, nvActeur.getDateDeNaissance());
+		etat.setString(4, nvActeur.getLieuDeNaissance());
 		etat.setString(5, nvActeur.getSexe());
 		
 		etat.executeUpdate();
+		etat.close();
 	}
 	// UPDATE
 	public static void miseAJourTable (Connection connect, cinema.model.Acteurs acteurModifier ) throws SQLException 
 	{
-		PreparedStatement etat = connect.prepareStatement("update " + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value Age = ?, value Nationalite = ?, value Sexe = ? ");
+		PreparedStatement etat = connect.prepareStatement("update " + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value DateDeNaissance = ?, value LieuDeNaissance = ?, value Sexe = ? ");
 		etat.setInt(1, acteurModifier.getIda());
 		etat.setString(2, acteurModifier.getNoms());
-		etat.setInt(3, acteurModifier.getAge());
-		etat.setString(4, acteurModifier.getNationalite());
+		etat.setString(3, acteurModifier.getDateDeNaissance());
+		etat.setString(4, acteurModifier.getLieuDeNaissance());
 		etat.setString(5, acteurModifier.getSexe());
 		
 		etat.executeUpdate();
+		etat.close();
 	}
 	// DELETE
 	public static void suppressionDonnee (Connection connect, cinema.model.Acteurs acteurSupprimer) throws SQLException 
@@ -60,10 +62,11 @@ public class CrudActeurs
 		PreparedStatement etat = connect.prepareStatement("delete " + ACTEUR_TABLE + "where IDa = ? ");
 		etat.setInt(1, acteurSupprimer.getIda());
 		etat.setString(2, acteurSupprimer.getNoms());
-		etat.setInt(3, acteurSupprimer.getAge());
-		etat.setString(4, acteurSupprimer.getNationalite());
+		etat.setString(3, acteurSupprimer.getDateDeNaissance());
+		etat.setString(4, acteurSupprimer.getLieuDeNaissance());
 		etat.setString(5, acteurSupprimer.getSexe());
 		
 		etat.executeUpdate();
+		etat.close();
 	}
 }

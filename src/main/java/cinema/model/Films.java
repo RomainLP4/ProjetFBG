@@ -8,16 +8,16 @@ public class Films {
 	private String titre;
 	private int annee;
 	private String genre;
-	public ArrayList <Acteurs> Actor = new ArrayList<>();
+	
 	
 
-	public Films(int idf, String titre, int annee, String genre, ArrayList<Acteurs> actor) {
+	public Films(int idf, String titre, int annee, String genre) {
 		super();
 		this.idf = idf;
 		this.titre = titre;
 		this.annee = annee;
 		this.genre = genre;
-		Actor = actor;
+		
 	}
 
 
