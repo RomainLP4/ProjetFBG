@@ -11,11 +11,16 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import jdk.nashorn.api.tree.ForInLoopTree;
+import cinema.model.Acteur;
+
 
 public class App {
 
-	public int actorID;
+//	public  static String lieu;
+//	public static String name;
+//	public static String birth;
+//	public static String sexe;
+//	public int actorID;
 
 	private static String IMDB_KEY = "0e6260469751f4d597183df49e4810b2";
 
@@ -67,7 +72,7 @@ public class App {
 
 	}
 
-	public void actorDetails(int actorID) throws MalformedURLException, IOException {
+	public Acteur actorDetails(int actorID) throws MalformedURLException, IOException {
 
 		String sexe;
 		String urlActorDetail = "https://api.themoviedb.org/3/person/" + actorID + "?api_key=" + IMDB_KEY+ "&language=en-US";
@@ -94,6 +99,7 @@ public class App {
 		System.out.println(name);
 		System.out.println(birth);
 		System.out.println(sexe);
+		return new Acteur(actorID, name, birth, lieu, sexe);
 
 
 	}
@@ -114,7 +120,7 @@ public class App {
 			for (int i = 0; i < l; i++) {
 				
 				String titre = main.getJSONObject(i).getString("original_title");
-				System.out.println(titre);
+				//System.out.println(titre);
 			}
 
 			
@@ -138,6 +144,9 @@ public class App {
 
 	public static void main(String[] args) throws MalformedURLException, IOException {
 		App test = new App();
+		//Acteur julia = new Acteur(5,name, birth, lieu, sexe, movies<titre>);
+		Acteur julia = test.actorDetails(5);
+		System.out.println(">> "+julia.getLieuDeNaissance());
 		// film("Star wars");
 		// test.acteur("tom cruise");
 		// System.out.println("l'id est "+actorID);

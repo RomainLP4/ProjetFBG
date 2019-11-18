@@ -12,15 +12,15 @@ public class Acteur {
 	public ArrayList<Film> movies = new ArrayList<> ();
 	
 	
-	public Acteur(int ida, String noms, String dateDeNaissance, String lieuDeNaissance, String sexe,
-			ArrayList<Film> movies) {
+	public Acteur(int ida, String noms, String dateDeNaissance, String lieuDeNaissance, String sexe) {
+//			,ArrayList<Film> movies) {
 		super();
 		this.ida = ida;
 		this.noms = noms;
 		this.dateDeNaissance = dateDeNaissance;
 		this.lieuDeNaissance = lieuDeNaissance;
 		this.sexe = sexe;
-		this.movies = movies;
+		this.movies = new ArrayList<Film>();
 		
 		
 	}
