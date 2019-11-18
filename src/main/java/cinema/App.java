@@ -42,7 +42,7 @@ public class App {
 		JSONObject jsonComplet = new JSONObject(jsonText);
 		JSONArray main = jsonComplet.getJSONArray("results");
 
-		int actorID = (int) main.getJSONObject(0).get("id");
+		int actorID = main.getJSONObject(0).getInt("id");
 		return actorID;
 
 		// System.out.println(actorID);
@@ -57,11 +57,12 @@ public class App {
 		writeJson(jsonText);
 
 		JSONObject jsonComplet = new JSONObject(jsonText);
-		JSONObject main = jsonComplet.getJSONObject("1");
-		// String actorName = (String) main.getJSONObject(jsonText).get("name");
+		String name= jsonComplet.getString("name");
+		
+		System.out.println(name);
 		
 
-		String actorName = (String) main.getJSONObject(0).get("name");
+		//String actorName = (String) main.getJSONObject(0).get("name");
 
 	}
 
@@ -95,7 +96,7 @@ public class App {
 	public static void main(String[] args) throws MalformedURLException, IOException {
 		App test = new App();
 		// film("Star wars");
-		// test.acteur("tom cruise");
+		 //test.acteur("tom cruise");
 		// System.out.println("l'id est "+actorID);
 		// System.out.println(test.acteur("Tom Cruise"));
 		test.actorDetails(test.acteur("tom cruise"));
