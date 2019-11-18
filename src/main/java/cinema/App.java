@@ -11,6 +11,8 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import jdk.nashorn.api.tree.ForInLoopTree;
+
 public class App {
 
 	public int actorID;
@@ -21,7 +23,6 @@ public class App {
 
 	public int idFilm(String titre) throws MalformedURLException, IOException 
 	{
-		//String url = "https://api.themoviedb.org/3/movie/123?api_key="+IMDB_KEY;//id de recherche apres movie/
 		String url = "https://api.themoviedb.org/3/search/movie?api_key="+IMDB_KEY+"&query="+titre;
 		String jsonText = IOUtils.toString(new URL(url), Charset.forName("UTF-8"));
 		writeJson(jsonText);
@@ -60,17 +61,16 @@ public class App {
 		JSONArray main = jsonComplet.getJSONArray("results");
 
 		int actorID = main.getJSONObject(0).getInt("id");
+		System.out.println(actorID);
 		return actorID;
 
-		// System.out.println(actorID);
 
 	}
 
 	public void actorDetails(int actorID) throws MalformedURLException, IOException {
 
 		String sexe;
-		String urlActorDetail = "https://api.themoviedb.org/3/person/" + actorID + "?api_key=" + IMDB_KEY
-				+ "&language=en-US";
+		String urlActorDetail = "https://api.themoviedb.org/3/person/" + actorID + "?api_key=" + IMDB_KEY+ "&language=en-US";
 
 		String jsonText = IOUtils.toString(new URL(urlActorDetail), Charset.forName("UTF-8"));
 		writeJson(jsonText);
@@ -98,17 +98,28 @@ public class App {
 
 	}
 
-	public static void actorCast(int actorid) throws MalformedURLException, IOException {
-		String urlActorCast = "https://api.themoviedb.org/3/person/" + actorid
-				+ "/movie_credits?api_key=0e6260469751f4d597183df49e4810b2&language=en-US\r\n" + "";
+		public void actorFilm (int actorID) throws MalformedURLException, IOException {
+			String urlActorFilm = "https://api.themoviedb.org/3/person/"+actorID+"/movie_credits?api_key="+IMDB_KEY+"&language=en-US\r\n" + "";
+			String jsonText = IOUtils.toString(new URL(urlActorFilm), Charset.forName("UTF-8"));
+			writeJson(jsonText);
 
-		String jsonText = IOUtils.toString(new URL(urlActorCast), Charset.forName("UTF-8"));
-		writeJson(jsonText);
+			
+//			String titre = jsonComplet.getString("original_title");
+			
+			
+			JSONObject jsonComplet = new JSONObject(jsonText);
+			JSONArray main = jsonComplet.getJSONArray("cast");
+			
+			int l = jsonComplet.getJSONArray("cast").length();
+			for (int i = 0; i < l; i++) {
+				
+				String titre = main.getJSONObject(i).getString("original_title");
+				System.out.println(titre);
+			}
 
-		// JSONObject jsonComplet = new JSONObject(jsonText);
-		// JSONObject main = jsonComplet.getJSONObject("main");
+			
 
-	}
+		}
 
 	public static void writeJson(String jsonText) {
 		BufferedWriter bw;
@@ -131,8 +142,9 @@ public class App {
 		// test.acteur("tom cruise");
 		// System.out.println("l'id est "+actorID);
 		// System.out.println(test.acteur("Tom Cruise"));
-		test.actorDetails(test.acteur("tom cruise"));
-		test.detailFilm(test.idFilm("rocky 2"));
+		//test.actorDetails(test.acteur("tom cruise"));
+		//test.detailFilm(test.idFilm("rocky 2"));
+		test.actorFilm(1204);
 	}
 
 }
