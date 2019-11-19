@@ -4,15 +4,15 @@ import java.text.MessageFormat;
 
 public class CrudActeurs 
 {
-	public final static String ACTEUR_TABLE = "cinema.acteurs";
-	public final static String  FILM_TABLE = "cinema.films";
+	public final static String ACTEUR_TABLE = "cinema.acteur";
+	public final static String  FILM_TABLE = "cinema.film";
 	
 	
-	//READ
-	public static void afficherTable (Connection connect, String nomTableau) throws SQLException 
+	//READ ok
+	public static void afficherTable (Connection connect) throws SQLException 
 	{
 		Statement etat = connect.createStatement();
-		String requete = "select * from " + nomTableau;
+		String requete = "select * from cinema.acteur";
 		
 		ResultSet resultat = etat.executeQuery(requete);
 		ResultSetMetaData resultAutoReference = resultat.getMetaData();
@@ -20,17 +20,17 @@ public class CrudActeurs
 		
 		while (resultat.next()) 
 		{
-			for (int ligne = 0; ligne < colonneNum; ligne++) 
+			for (int ligne = 1; ligne < colonneNum; ligne++) 
 			{
 				String valeurColonne = resultat.getString(ligne);
 				String nomColonne = resultAutoReference.getColumnName(ligne);
-				System.out.println(MessageFormat.format("<{0}:{1}>\t\t", valeurColonne, nomColonne));
+				System.out.print(MessageFormat.format("<{0}>\t\t", valeurColonne));
 			}
 			System.out.println();
 		}		
 	}
 	
-	//CREATE
+	//CREATE ok
 	public static void creationActeur (Connection connect, cinema.model.Acteur nvActeur)
 	{
 		PreparedStatement etat;
@@ -51,28 +51,26 @@ public class CrudActeurs
 			e.printStackTrace();
 		}
 	}
-	// UPDATE
+	// UPDATE  ok
 	public static void miseAJourTable (Connection connect, cinema.model.Acteur acteurModifier ) throws SQLException 
 	{
-		PreparedStatement etat = connect.prepareStatement("update " + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value DateDeNaissance = ?, value LieuDeNaissance = ?, value Sexe = ? ");
-		etat.setInt(1, acteurModifier.getIda());
-		etat.setString(2, acteurModifier.getNoms());
-		etat.setString(3, acteurModifier.getDateDeNaissance());
-		etat.setString(4, acteurModifier.getLieuDeNaissance());
-		etat.setString(5, acteurModifier.getSexe());
+		PreparedStatement etat = connect.prepareStatement("update cinema.acteur set Nom= ?, DateDeNaissance= ?,LieuDeNaissance= ?, Sexe=? where ida=?");
+		etat.setString(1, acteurModifier.getNoms());
+		etat.setString(2, acteurModifier.getDateDeNaissance());
+		etat.setString(3, acteurModifier.getLieuDeNaissance());
+		etat.setString(4, acteurModifier.getSexe());
+		etat.setInt(5, acteurModifier.getIda());
+		
 		
 		etat.executeUpdate();
 		etat.close();
 	}
-	// DELETE
+	// DELETE OK
 	public static void suppressionDonnee (Connection connect, cinema.model.Acteur acteurSupprimer) throws SQLException 
 	{
-		PreparedStatement etat = connect.prepareStatement("delete " + ACTEUR_TABLE + "where IDa = ? ");
+		PreparedStatement etat = connect.prepareStatement("delete from cinema.acteur where IDa = ? ");
 		etat.setInt(1, acteurSupprimer.getIda());
-		etat.setString(2, acteurSupprimer.getNoms());
-		etat.setString(3, acteurSupprimer.getDateDeNaissance());
-		etat.setString(4, acteurSupprimer.getLieuDeNaissance());
-		etat.setString(5, acteurSupprimer.getSexe());
+
 		
 		etat.executeUpdate();
 		etat.close();
