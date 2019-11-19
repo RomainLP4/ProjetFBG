@@ -34,7 +34,7 @@ public static void main(String[] args) throws MalformedURLException, IOException
 	//CrudActeurs.suppressionDonnee(session.getConnection(), julia);	
 	//Requete.detailFilm(11);
 	//Requete.detailFilm(Requete.idFilm("star wars"));
-	Film star = Requete.detailFilm(Requete.idFilm("star wars"));
-	CrudFilms.creationFilm(session.getConnection(), star);
+	Film shrek = Requete.detailFilm(Requete.idFilm("shrek"));
+	CrudFilms.creationFilm(session.getConnection(), shrek);
 }
 }
