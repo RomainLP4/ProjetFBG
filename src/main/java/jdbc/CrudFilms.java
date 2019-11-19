@@ -1,76 +1,73 @@
 package jdbc;
+
 import java.sql.*;
 import java.text.MessageFormat;
 
-
 public class CrudFilms {
 
-	public final static String ACTEUR_TABLE = "cinema.acteurs";
-	public final static String  FILM_TABLE = "cinema.films";
-	
-	//READ
-		public static void afficherTable (Connection connect, String nomTableau) throws SQLException 
-		{
-			Statement etat = connect.createStatement();
-			String requete = "select * from " + nomTableau;
-			
-			ResultSet resultat = etat.executeQuery(requete);
-			ResultSetMetaData resultAutoReference = resultat.getMetaData();
-			int colonneNum = resultAutoReference.getColumnCount();
-			
-			while (resultat.next()) 
-			{
-				for (int ligne = 0; ligne < colonneNum; ligne++) 
-				{
-					String valeurColonne = resultat.getString(ligne);
-					String nomColonne = resultAutoReference.getColumnName(ligne);
-					System.out.println(MessageFormat.format("<{0}:{1}>\t\t", valeurColonne, nomColonne));
-				}
-				System.out.println();
-			}		
+	public final static String ACTEUR_TABLE = "cinema.acteur";
+	public final static String FILM_TABLE = "cinema.film";
+
+	// READ ok
+	public static void afficherTableFilm(Connection connect) throws SQLException {
+		Statement etat = connect.createStatement();
+		String requete = "select * from cinema.film";
+
+		ResultSet resultat = etat.executeQuery(requete);
+		ResultSetMetaData resultAutoReference = resultat.getMetaData();
+		int colonneNum = resultAutoReference.getColumnCount();
+
+		while (resultat.next()) {
+			for (int ligne = 1; ligne < colonneNum; ligne++) {
+				String valeurColonne = resultat.getString(ligne);
+				String nomColonne = resultAutoReference.getColumnName(ligne);
+				System.out.print(MessageFormat.format("<{0}>\t\t", valeurColonne));
+			}
+			System.out.println();
 		}
-		
-		
-		//CREATE
-		public static void creationFilm (Connection connect, cinema.model.Film nvFilm) throws SQLException
-		{
-			PreparedStatement etat = connect.prepareStatement("insert into" + FILM_TABLE + "value Idf = ?, value Titre = ?, value Annee = ?, value Genre = ?");
+	}
+
+	// CREATE ok
+	public static void creationFilm(Connection connect, cinema.model.Film nvFilm) {
+		PreparedStatement etat;
+		String requete = "insert into cinema.film values(?, ?, ?, ?, ?)";
+		try {
+			etat = connect.prepareStatement(requete);
+
 			etat.setInt(1, nvFilm.getIdf());
 			etat.setString(2, nvFilm.getTitre());
-			etat.setInt(3,nvFilm.getAnnee());			
+			etat.setInt(3, nvFilm.getAnnee());
 			etat.setString(4, nvFilm.getGenre());
-			
+
 			etat.executeUpdate();
 			etat.close();
+
+		} catch (SQLException e) {
+			System.out.println("ERREUR ! ");
+			e.printStackTrace();
 		}
+	}
+
+	// UPDATE OK
+	public static void miseAJourTableFilm(Connection connect, cinema.model.Film filmModifier) throws SQLException {
+		PreparedStatement etat = connect.prepareStatement("update cinema.film set Titre = ?, Annee = ?, Genre = ? where idf = ?");
 		
+		etat.setString(1, filmModifier.getTitre());
+		etat.setInt(2, filmModifier.getAnnee());
+		etat.setString(3, filmModifier.getGenre());
+		etat.setInt(4, filmModifier.getIdf());
+
+		etat.executeUpdate();
+		etat.close();
+	}
+
+	// DELETE OK
+	public static void suppressionFilm(Connection connect, cinema.model.Film filmSupprimer) throws SQLException {
+		PreparedStatement etat = connect.prepareStatement("delete from cinema.film where IDf = ? ");
 		
-		// UPDATE
-		public static void miseAJourTableFilm (Connection connect, cinema.model.Film filmModifier ) throws SQLException 
-		{
-			PreparedStatement etat = connect.prepareStatement("update " + FILM_TABLE + "value Idf = ?, value Titre = ?, value Annee = ?, value Genre = ?");
-			etat.setInt(1, filmModifier.getIdf());
-			etat.setString(2, filmModifier.getTitre());
-			etat.setInt(3, filmModifier.getAnnee());
-			etat.setString(4, filmModifier.getGenre());
-			
-			etat.executeUpdate();
-			etat.close();
-		}	
-			
-		// DELETE
-		public static void suppressionDonneeFilm (Connection connect, cinema.model.Film filmSupprimer) throws SQLException 
-		{
-			PreparedStatement etat = connect.prepareStatement("delete " + FILM_TABLE + "where Idf = ? ");
-			etat.setInt(1, filmSupprimer.getIdf());
-			etat.setString(2, filmSupprimer.getTitre());
-			etat.setInt(3,filmSupprimer.getAnnee());
-			etat.setString(4, filmSupprimer.getGenre());	
-				
-			etat.executeUpdate();
-			etat.close();
-		}
-			
-	
-	
+		etat.setInt(1, filmSupprimer.getIdf());
+
+		etat.executeUpdate();
+		etat.close();
+	}
 }
