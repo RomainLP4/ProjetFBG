@@ -49,6 +49,8 @@ public class App {
 Scanner sc = new Scanner(System.in);
 int menu = 0;
 int menu2 = 0;
+int menu3 = 0;
+
 
 
   do{
@@ -84,23 +86,57 @@ while (menu < 1 || menu > 2) ;
 		if (menu2 == 1) {
 			System.out.println("Vous allez créer un nouvel acteur !");
 			System.out.println("Entrez son prénom et son nom :");
-			Scanner scActeur = new Scanner(System.in);
 			
+			Scanner scActeur = new Scanner(System.in);
 			String saisie = scActeur.nextLine();
 			
 			Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
 			CrudActeurs.creationActeur(session.getConnection(), acteur);
 			
 			
+			// TODO si acteur inconnu
 			
+		} else if (menu2 == 2) 	{
+			System.out.println("Vous voulez réafficher la table Acteur. Et bien, la voici :");
+			CrudActeurs.afficherTable(session.getConnection());	
+		
+		} else if (menu2 == 3) {
+			System.out.println("Vous allez maintenant modifier un ou plusieurs paramètres d'un acteur.");
+			System.out.println("Quel acteur ou actrice voulez-vous modifier ?\n Entrez son prénom et son nom :");
 			
-		} 	
+			Scanner scActeur = new Scanner(System.in);
+			String saisie = scActeur.nextLine();
+			Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
+			
+			System.out.println("Quel paramètre voulez-vous modifier ?");
+			System.out.println(" Pour modifier son nom, tappez 1.\n Pour modifier sa date de naissance, tappez 2.\n Pour modifier son lieu de naissance, tappez 3. \n Pour lui changer de sexe, tappez 4 !...");
+			
+				do{
+				 
+				    while(!sc.hasNextInt()){
+				    	System.out.println("Entrée incorrect, recommencez");
+				    	sc.next();
+				    } menu3= sc.nextInt();
+			}
+				    	
+			while (menu3 < 1 || menu3 > 4) ;
+			
+					
+			if (menu3 == 1) {
+				System.out.println("Comment voulez-vous l'appeler ?");
+				
+				Scanner scModif = new Scanner(System.in);
+				String modif = scModif.nextLine();
+			
+			    acteur.setNoms(modif);
+			    CrudActeurs.miseAJourTable(session.getConnection(), acteur);
+			}
+			// CrudActeurs.afficherTable(session.getConnection());
+//			julia.setNoms("Erin Brokovitch");
+		}
+		
 
-//				} else {
-//					System.out.println("Vous avez demandé d'afficher la table Film");
-//					CrudFilms.afficherTableFilm(session.getConnection());
-//				
-//				}
+
 		
 		
 	} else {
