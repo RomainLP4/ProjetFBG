@@ -11,30 +11,37 @@ import jdbc.CrudFilms;
 import jdbc.Requete;
 import jdbc.Session;
 
-public class App{
-	
+public class App {
 
-public static void main(String[] args) throws MalformedURLException, IOException, SQLException {
-	Session session = new Session();
-				//Acteur tom = new Acteur(500,name, birth, lieu, sexe, movies<titre>);
-		//Acteur julia = req.actorDetails(5);
-		//System.out.println(">> "+julia.getLieuDeNaissance());
-	
+	public static void main(String[] args) throws MalformedURLException, IOException, SQLException {
+		Session session = new Session();
+		// Acteur tom = new Acteur(500,name, birth, lieu, sexe, movies<titre>);
+		// Acteur julia = req.actorDetails(5);
+		// System.out.println(">> "+julia.getLieuDeNaissance());
+
 //	Acteur tom = Requete.actorDetails(Requete.acteur("Tom cruise"));
 //	CrudActeurs.creationActeur(session.getConnection(), tom);
 //	Requete.actorFilm(Requete.acteur("Tom cruise"));
 
-	//Acteur julia = Requete.actorDetails(Requete.acteur("Julia Roberts"));
+		// Acteur julia = Requete.actorDetails(Requete.acteur("Julia Roberts"));
 //	CrudActeurs.creationActeur(session.getConnection(), julia);
-	
-	//CrudActeurs.afficherTable(session.getConnection());
+
+		// CrudActeurs.afficherTable(session.getConnection());
 //	julia.setNoms("Erin Brokovitch");
 //	CrudActeurs.miseAJourTable(session.getConnection(), julia);
-	
-	//CrudActeurs.suppressionDonnee(session.getConnection(), julia);	
-	//Requete.detailFilm(11);
-	//Requete.detailFilm(Requete.idFilm("star wars"));
-	Film shrek = Requete.detailFilm(Requete.idFilm("shrek"));
-	CrudFilms.creationFilm(session.getConnection(), shrek);
-}
+
+		// CrudActeurs.suppressionDonnee(session.getConnection(), julia);
+		// Requete.detailFilm(11);
+		// Requete.detailFilm(Requete.idFilm("star wars"));
+		// Film shrek = Requete.detailFilm(Requete.idFilm("shrek"));
+//	CrudFilms.creationFilm(session.getConnection(), shrek);
+
+		// CrudFilms.afficherTableFilm(session.getConnection());
+//	shrek.setAnnee("2001");
+//	CrudFilms.miseAJourTableFilm(session.getConnection(), shrek);
+
+		// CrudFilms.suppressionFilm(session.getConnection(), shrek);
+		System.out.println();
+
+	}
 }
