@@ -48,6 +48,8 @@ public class App {
 
 Scanner sc = new Scanner(System.in);
 int menu = 0;
+int menu2 = 0;
+
 
   do{
   System.out.print("Bonjour, quelle table voulez vous afficher?\n 1 Acteur\n 2 Film \n");
@@ -59,17 +61,64 @@ int menu = 0;
         System.out.println("Bonjour, quelle table voulez vous afficher?\n 1 Acteur\n 2 Film \n");
         sc.next();
     } menu= sc.nextInt();
+  
 }
 while (menu < 1 || menu > 2) ;
 
 	if (menu == 1) {
 		System.out.println("Vous avez demandé d'afficher la table Acteur.");
 		CrudActeurs.afficherTable(session.getConnection());
+		
+		do{
+			  System.out.print("Et maintenant, que voulez vous faire ?");
+			  System.out.println("\n1 | Ajouter un acteur.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un acteur.");
+			    while(!sc.hasNextInt()){
+			    	System.out.println("Entrée incorrect, recommencez");
+			    	sc.next();
+			    } menu2= sc.nextInt();
+		}
+			    	
+		while (menu2 < 1 || menu2 > 4) ;
+			        
+			    	
+		if (menu2 == 1) {
+			System.out.println("Vous allez créer un nouvel acteur !");
+			System.out.println("Entrez son prénom et son nom :");
+			Scanner scActeur = new Scanner(System.in);
+			
+			String saisie = scActeur.nextLine();
+			
+			Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
+			CrudActeurs.creationActeur(session.getConnection(), acteur);
+			
+			
+			
+			
+		} 	
+
+//				} else {
+//					System.out.println("Vous avez demandé d'afficher la table Film");
+//					CrudFilms.afficherTableFilm(session.getConnection());
+//				
+//				}
+		
+		
 	} else {
 		System.out.println("Vous avez demandé d'afficher la table Film");
 		CrudFilms.afficherTableFilm(session.getConnection());
 	
 	}
+	
+	//////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 	
 }
