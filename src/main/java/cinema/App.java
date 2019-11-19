@@ -45,15 +45,7 @@ public class App {
 		
 		
 		
- 
 
-//		if (menu == 1) {
-//			CrudActeurs.afficherTable(session.getConnection());
-//			System.out.println("Vous avez demandé d'afficher la table Acteur.");
-//		} else {
-//			CrudFilms.afficherTableFilm(session.getConnection());
-//			System.out.println("Vous avez demandé d'afficher la table Film");
-//		
 Scanner sc = new Scanner(System.in);
 int menu = 0;
 
@@ -61,17 +53,26 @@ int menu = 0;
   System.out.print("Bonjour, quelle table voulez vous afficher?\n 1 Acteur\n 2 Film \n");
     while(!sc.hasNextInt()){
         
+    	
+    	
         System.out.println("Entrée incorrect, recommencez");
         System.out.println("Bonjour, quelle table voulez vous afficher?\n 1 Acteur\n 2 Film \n");
         sc.next();
     } menu= sc.nextInt();
 }
-while (menu < 1 || menu > 2) ;}}
+while (menu < 1 || menu > 2) ;
+
+	if (menu == 1) {
+		System.out.println("Vous avez demandé d'afficher la table Acteur.");
+		CrudActeurs.afficherTable(session.getConnection());
+	} else {
+		System.out.println("Vous avez demandé d'afficher la table Film");
+		CrudFilms.afficherTableFilm(session.getConnection());
+	
+	}
+	}
+	
+}
 		
 		
 	
-//		} else if (menu < 1 || menu > 2) {
-//			System.out.println("Veuillez entrer 1 pour Acteur ou 2 pour Film.");
-//		} else {
-//			System.out.println("Saisie incorrect");
-//		}
