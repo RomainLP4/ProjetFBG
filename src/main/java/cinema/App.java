@@ -11,6 +11,7 @@ public class App{
 
 public static void main(String[] args) throws MalformedURLException, IOException {
 		App test = new App();
+		Requete req = new Requete();
 		//Acteur julia = new Acteur(5,name, birth, lieu, sexe, movies<titre>);
 		Acteur julia = test.actorDetails(5);
 		System.out.println(">> "+julia.getLieuDeNaissance());
@@ -20,6 +21,6 @@ public static void main(String[] args) throws MalformedURLException, IOException
 		// System.out.println(test.acteur("Tom Cruise"));
 		//test.actorDetails(test.acteur("tom cruise"));
 		//test.detailFilm(test.idFilm("rocky 2"));
-		test.actorFilm(1204);
+		Requete.actorFilm(1204);
 	}
 }
