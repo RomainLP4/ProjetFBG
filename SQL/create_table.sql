@@ -10,7 +10,7 @@
 CREATE TABLE Film(
         idf   Int  Auto_increment  NOT NULL ,
         Titre Varchar (50) NOT NULL ,
-        Annee Year NOT NULL ,
+        Annee Varchar (50) NOT NULL ,
         Genre Varchar (50) NOT NULL
 	,CONSTRAINT Film_PK PRIMARY KEY (idf)
 )ENGINE=InnoDB;
