@@ -3,7 +3,8 @@ package cinema;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
-
+import java.util.Scanner;
+import java.util.*;
 import cinema.model.Acteur;
 import cinema.model.Film;
 import jdbc.CrudActeurs;
@@ -41,7 +42,36 @@ public class App {
 //	CrudFilms.miseAJourTableFilm(session.getConnection(), shrek);
 
 		// CrudFilms.suppressionFilm(session.getConnection(), shrek);
-		System.out.println();
+		
+		
+		
+ 
 
-	}
+//		if (menu == 1) {
+//			CrudActeurs.afficherTable(session.getConnection());
+//			System.out.println("Vous avez demandé d'afficher la table Acteur.");
+//		} else {
+//			CrudFilms.afficherTableFilm(session.getConnection());
+//			System.out.println("Vous avez demandé d'afficher la table Film");
+//		
+Scanner sc = new Scanner(System.in);
+int menu = 0;
+
+  do{
+  System.out.print("Bonjour, quelle table voulez vous afficher?\n 1 Acteur\n 2 Film \n");
+    while(!sc.hasNextInt()){
+        
+        System.out.println("Entrée incorrect, recommencez");
+        System.out.println("Bonjour, quelle table voulez vous afficher?\n 1 Acteur\n 2 Film \n");
+        sc.next();
+    } menu= sc.nextInt();
 }
+while (menu < 1 || menu > 2) ;}}
+		
+		
+	
+//		} else if (menu < 1 || menu > 2) {
+//			System.out.println("Veuillez entrer 1 pour Acteur ou 2 pour Film.");
+//		} else {
+//			System.out.println("Saisie incorrect");
+//		}
