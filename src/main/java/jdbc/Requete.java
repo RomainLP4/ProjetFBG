@@ -40,6 +40,7 @@ public class Requete {
 		return filmID;
 	}
 	// detail film
+	
 	public static void detailFilm(int filmID) throws MalformedURLException, IOException 
 	{
 		String urlDetailFilm = "https://api.themoviedb.org/3/movie/"+filmID+"?api_key="+IMDB_KEY+"&language=en-US";
@@ -51,7 +52,9 @@ public class Requete {
 		String date = jsonComplet.getString("release_date");
 		JSONArray genre1 = jsonComplet.getJSONArray("genres");
 		String genre = (String) genre1.getJSONObject(0).get("name");
+		String titre = jsonComplet.getString("original_title");
 		
+		System.out.println(titre);
 		System.out.println(date);
 		System.out.println(genre);
 	}
