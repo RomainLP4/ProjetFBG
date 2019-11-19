@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import cinema.model.Acteur;
+import cinema.model.Film;
 
 public class Requete {
 
@@ -41,7 +42,7 @@ public class Requete {
 	}
 	// detail film
 	
-	public static void detailFilm(int filmID) throws MalformedURLException, IOException 
+	public static Film detailFilm(int filmID) throws MalformedURLException, IOException 
 	{
 		String urlDetailFilm = "https://api.themoviedb.org/3/movie/"+filmID+"?api_key="+IMDB_KEY+"&language=en-US";
 		
@@ -54,9 +55,11 @@ public class Requete {
 		String genre = (String) genre1.getJSONObject(0).get("name");
 		String titre = jsonComplet.getString("original_title");
 		
-		System.out.println(titre);
-		System.out.println(date);
-		System.out.println(genre);
+		
+//		System.out.println(titre);
+//		System.out.println(date);
+//		System.out.println(genre);
+		return new Film(filmID, titre, date, genre);
 	}
 
 	public static int acteur(String actor) throws MalformedURLException, IOException {

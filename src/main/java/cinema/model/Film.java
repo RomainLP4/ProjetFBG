@@ -5,12 +5,12 @@ public class Film {
 
 	private int idf;
 	private String titre;
-	private int annee;
+	private String annee;
 	private String genre;
 	
 	
 
-	public Film(int idf, String titre, int annee, String genre) {
+	public Film(int idf, String titre, String annee, String genre) {
 		super();
 		this.idf = idf;
 		this.titre = titre;
@@ -40,12 +40,12 @@ public class Film {
 	}
 
 
-	public int getAnnee() {
+	public String getAnnee() {
 		return annee;
 	}
 
 
-	public void setAnnee(int annee) {
+	public void setAnnee(String annee) {
 		this.annee = annee;
 	}
 

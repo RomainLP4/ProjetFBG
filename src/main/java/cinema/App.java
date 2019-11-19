@@ -5,7 +5,9 @@ import java.net.MalformedURLException;
 import java.sql.SQLException;
 
 import cinema.model.Acteur;
+import cinema.model.Film;
 import jdbc.CrudActeurs;
+import jdbc.CrudFilms;
 import jdbc.Requete;
 import jdbc.Session;
 
@@ -31,6 +33,8 @@ public static void main(String[] args) throws MalformedURLException, IOException
 	
 	//CrudActeurs.suppressionDonnee(session.getConnection(), julia);	
 	//Requete.detailFilm(11);
-	Requete.detailFilm(Requete.idFilm("star wars"));
+	//Requete.detailFilm(Requete.idFilm("star wars"));
+	Film star = Requete.detailFilm(Requete.idFilm("star wars"));
+	CrudFilms.creationFilm(session.getConnection(), star);
 }
 }

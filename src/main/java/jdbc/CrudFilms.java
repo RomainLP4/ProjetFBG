@@ -30,14 +30,15 @@ public class CrudFilms {
 	// CREATE ok
 	public static void creationFilm(Connection connect, cinema.model.Film nvFilm) {
 		PreparedStatement etat;
-		String requete = "insert into cinema.film values(?, ?, ?, ?, ?)";
+		String requete = "insert into cinema.film values(?, ?, ?, ?)";
 		try {
 			etat = connect.prepareStatement(requete);
 
 			etat.setInt(1, nvFilm.getIdf());
 			etat.setString(2, nvFilm.getTitre());
-			etat.setInt(3, nvFilm.getAnnee());
+			etat.setString(3, nvFilm.getAnnee());
 			etat.setString(4, nvFilm.getGenre());
+			
 
 			etat.executeUpdate();
 			etat.close();
@@ -53,7 +54,7 @@ public class CrudFilms {
 		PreparedStatement etat = connect.prepareStatement("update cinema.film set Titre = ?, Annee = ?, Genre = ? where idf = ?");
 		
 		etat.setString(1, filmModifier.getTitre());
-		etat.setInt(2, filmModifier.getAnnee());
+		etat.setString(2, filmModifier.getAnnee());
 		etat.setString(3, filmModifier.getGenre());
 		etat.setInt(4, filmModifier.getIdf());
 
