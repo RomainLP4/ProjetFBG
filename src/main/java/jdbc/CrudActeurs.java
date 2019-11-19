@@ -31,9 +31,13 @@ public class CrudActeurs
 	}
 	
 	//CREATE
-	public static void creationActeur (Connection connect, cinema.model.Acteur nvActeur) throws SQLException
+	public static void creationActeur (Connection connect, cinema.model.Acteur nvActeur)
 	{
-		PreparedStatement etat = connect.prepareStatement("insert into" + ACTEUR_TABLE + "value IDa = ?, value Noms = ?, value DateDeNaissance = ?, value LieuDeNaissance = ?, value Sexe = ? ");
+		PreparedStatement etat;
+		String requete = "insert into cinema.acteur values(?, ?, ?, ?, ?)";
+		try {
+			etat = connect.prepareStatement(requete);
+		
 		etat.setInt(1, nvActeur.getIda());
 		etat.setString(2, nvActeur.getNoms());
 		etat.setString(3, nvActeur.getDateDeNaissance());
@@ -42,6 +46,10 @@ public class CrudActeurs
 		
 		etat.executeUpdate();
 		etat.close();
+		} catch (SQLException e) {
+			System.out.println("ERREUR ! ");
+			e.printStackTrace();
+		}
 	}
 	// UPDATE
 	public static void miseAJourTable (Connection connect, cinema.model.Acteur acteurModifier ) throws SQLException 

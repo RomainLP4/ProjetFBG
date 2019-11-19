@@ -2,7 +2,7 @@ package jdbc;
 
 public class Parametres {
     
-    private static String password = "root";
+    private static String password = "Toulouse*31";
     private static String user = "root";
     private static String url = "jdbc:mysql://localhost:3306/cinema?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
      

@@ -25,7 +25,9 @@ public class Requete {
 
 	public static String jsonFileName = "sample.json";
 
-	public int idFilm(String titre) throws MalformedURLException, IOException 
+	
+	
+	public static int idFilm(String titre) throws MalformedURLException, IOException 
 	{
 		String url = "https://api.themoviedb.org/3/search/movie?api_key="+IMDB_KEY+"&query="+titre;
 		String jsonText = IOUtils.toString(new URL(url), Charset.forName("UTF-8"));
@@ -38,7 +40,7 @@ public class Requete {
 		return filmID;
 	}
 	// detail film
-	public void detailFilm(int filmID) throws MalformedURLException, IOException 
+	public static void detailFilm(int filmID) throws MalformedURLException, IOException 
 	{
 		String urlDetailFilm = "https://api.themoviedb.org/3/movie/"+filmID+"?api_key="+IMDB_KEY+"&language=en-US";
 		
@@ -54,7 +56,7 @@ public class Requete {
 		System.out.println(genre);
 	}
 
-	public int acteur(String actor) throws MalformedURLException, IOException {
+	public static int acteur(String actor) throws MalformedURLException, IOException {
 		String urlActorID = "https://api.themoviedb.org/3/search/person?api_key=" + IMDB_KEY + "&language=en-US&query="
 				+ actor + "&page=1&include_adult=false\r\n" + "";
 
@@ -65,13 +67,13 @@ public class Requete {
 		JSONArray main = jsonComplet.getJSONArray("results");
 
 		int actorID = main.getJSONObject(0).getInt("id");
-		System.out.println(actorID);
+		//System.out.println(actorID);
 		return actorID;
 
 
 	}
 
-	public Acteur actorDetails(int actorID) throws MalformedURLException, IOException {
+	public static Acteur actorDetails(int actorID) throws MalformedURLException, IOException {
 
 		String sexe;
 		String urlActorDetail = "https://api.themoviedb.org/3/person/" + actorID + "?api_key=" + IMDB_KEY+ "&language=en-US";
@@ -103,14 +105,11 @@ public class Requete {
 
 	}
 
-		public void actorFilm (int actorID) throws MalformedURLException, IOException {
+		public static void actorFilm (int actorID) throws MalformedURLException, IOException {
 			String urlActorFilm = "https://api.themoviedb.org/3/person/"+actorID+"/movie_credits?api_key="+IMDB_KEY+"&language=en-US\r\n" + "";
 			String jsonText = IOUtils.toString(new URL(urlActorFilm), Charset.forName("UTF-8"));
 			writeJson(jsonText);
-
-			
-//			String titre = jsonComplet.getString("original_title");
-			
+		
 			
 			JSONObject jsonComplet = new JSONObject(jsonText);
 			JSONArray main = jsonComplet.getJSONArray("cast");
@@ -119,7 +118,7 @@ public class Requete {
 			for (int i = 0; i < l; i++) {
 				
 				String titre = main.getJSONObject(i).getString("original_title");
-				//System.out.println(titre);
+				System.out.println(titre);
 			}
 
 			
