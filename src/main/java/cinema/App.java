@@ -48,7 +48,7 @@ public class App {
 		
 		
 		
-
+//
 //Scanner sc = new Scanner(System.in);
 //int menu = 0;
 //int menu2 = 0;
@@ -178,16 +178,16 @@ public class App {
 //
 //		
 //		
-//	} else {
+//	} else if (menu == 2) {
 //		System.out.println("Vous avez demandé d'afficher la table Film");
 //		CrudFilms.afficherTableFilm(session.getConnection());
 //	
 //	}
-//	
+	
 //	//////////////////////////////////////////////////////////////////////////
 //	
 	Menu menu = new Menu();
-	//Menu.choixDeLaTable();
+	Menu.choixDeLaTable();
 	Menu.sousMenuActeur();
 	
 	

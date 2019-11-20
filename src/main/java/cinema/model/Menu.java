@@ -49,8 +49,8 @@ public class Menu {
 			
 			
 	
-	//static Session session = new Session();
-	//static Scanner sc = new Scanner(System.in);
+	static Session session = new Session();
+	static Scanner sc = new Scanner(System.in);
 	//static int menu = 0;
 	//static int menu2 = 0;
 	//static int menu3 = 0;
@@ -61,8 +61,8 @@ public class Menu {
 
 	public static void choixDeLaTable() throws SQLException {
 		
-		Session session = new Session();
-		Scanner sc = new Scanner(System.in);
+//		Session session = new Session();
+//		Scanner sc = new Scanner(System.in);
 		
 		int menu = 0;
 	
@@ -90,8 +90,8 @@ public class Menu {
 	
 	public static void sousMenuActeur() throws SQLException, MalformedURLException, IOException {
 
-		Session session = new Session();
-		Scanner sc = new Scanner(System.in);
+//		Session session = new Session();
+//		Scanner sc = new Scanner(System.in);
 		
 		int menu2 = 0;
 			
@@ -132,13 +132,13 @@ public class Menu {
 				Scanner scActeur = new Scanner(System.in);
 				String saisie = scActeur.nextLine();
 				Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
-				sousMenuUpdateActeur();
+				Menu.sousMenuUpdateActeur();
 				
 			} else if (menu2 == 4) {
 				System.out.println("Vous avez maintenant la possibilité de supprimer un acteur.");
 				System.out.println("Quel acteur ou actrice voulez-vous supprimer ?\n Entrez son prénom et son nom :");
 				
-				 Scanner scActeur = new Scanner(System.in);
+				Scanner scActeur = new Scanner(System.in);
 				String saisie = scActeur.nextLine();
 				Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
 				
@@ -149,16 +149,22 @@ public class Menu {
 			
 		public static void sousMenuUpdateActeur() throws SQLException, MalformedURLException, IOException {
 			
-			Session session = new Session();
-			Scanner sc = new Scanner(System.in);
+			//sousMenuActeur();
+			
+			
+//			Session session = new Session();
+//			Scanner sc = new Scanner(System.in);
 			
 			int menu3;
 				
 				System.out.println("Quel paramètre voulez-vous modifier ?");
 				System.out.println(" Pour modifier son nom, tappez 1.\n Pour modifier sa date de naissance, tappez 2.\n Pour modifier son lieu de naissance, tappez 3. \n Pour lui changer de sexe, tappez 4 !...");
 				
+				Scanner scActeur = new Scanner(System.in);
+				String saisie = scActeur.nextLine();
+				Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
+				
 				do{
-					 
 					    while(!sc.hasNextInt()){
 					    	System.out.println("Entrée incorrect, recommencez");
 					    	sc.next();
@@ -170,37 +176,35 @@ public class Menu {
 				if (menu3 == 1) {
 					
 					System.out.println("Comment voulez-vous l'appeler ?");
-					
+								
 					Scanner scModif = new Scanner(System.in);
 					String modif = scModif.nextLine();
-					Acteur acteur = Requete.actorDetails(Requete.acteur(modif));
+					//Acteur acteur = Requete.actorDetails(Requete.acteur(modif));
 					
 					acteur.setNoms(modif);
+					System.out.println("noms : "+acteur.getNoms());
 				    CrudActeurs.miseAJourTable(session.getConnection(), acteur);
 				
-				    
-				    
-				    
-				    
-				    
+				    				 							    
 				} else if (menu3 == 2) {
 					
 					System.out.println("Quand voulez vous qu'il ou elle soit né(e) ?");
-					
+									
 					Scanner scModif2 = new Scanner(System.in);
 					String modif2 = scModif2.nextLine();
-					Acteur acteur = Requete.actorDetails(Requete.acteur(modif2));
+					//Acteur acteur = Requete.actorDetails(Requete.acteur(modif2));
 					
 					acteur.setDateDeNaissance(modif2);
 					CrudActeurs.miseAJourTable(session.getConnection(), acteur);
 				
+				
 				} else if (menu3 == 3) {
 					
 					System.out.println("Où voulez-vous qu'il ou elle soit né(e) ? ");
-									
+										
 					Scanner scModif3 = new Scanner(System.in);
 					String modif3 = scModif3.nextLine();
-					Acteur acteur = Requete.actorDetails(Requete.acteur(modif3));
+					//Acteur acteur = Requete.actorDetails(Requete.acteur(modif3));
 					
 					
 					acteur.setLieuDeNaissance(modif3);
@@ -209,23 +213,16 @@ public class Menu {
 				} else if (menu3 == 4) {
 					
 					System.out.println("Si vous voulez lui changer de sexe, tappez Homme ou Femme :");
-					
+									
 					Scanner scModif4 = new Scanner(System.in);
 					String modif4 = scModif4.nextLine();
-					Acteur acteur = Requete.actorDetails(Requete.acteur(modif4));
+					//Acteur acteur = Requete.actorDetails(Requete.acteur(modif4));
 					
 					acteur.setSexe(modif4);
 					CrudActeurs.miseAJourTable(session.getConnection(), acteur);	
 				}	
-			
-			
-			
 				
 			}
 
-			
-			
-		
-	
 }
 
