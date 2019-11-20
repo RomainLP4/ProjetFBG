@@ -130,9 +130,34 @@ while (menu < 1 || menu > 2) ;
 			
 			    acteur.setNoms(modif);
 			    CrudActeurs.miseAJourTable(session.getConnection(), acteur);
-			}
-			// CrudActeurs.afficherTable(session.getConnection());
-//			julia.setNoms("Erin Brokovitch");
+			
+			} else if (menu3 == 2) {
+				System.out.println("Quand voulez vous qu'il ou elle soit né(e) ?");
+				
+				Scanner scModif2 = new Scanner(System.in);
+				String modif2 = scModif2.nextLine();
+				
+				acteur.setDateDeNaissance(modif2);
+				CrudActeurs.miseAJourTable(session.getConnection(), acteur);
+			
+			} else if (menu3 == 3) {
+				System.out.println("Où voulez-vous qu'il ou elle soit né(e) ? ");
+				
+				Scanner scModif3 = new Scanner(System.in);
+				String modif3 = scModif3.nextLine();
+				
+				acteur.setLieuDeNaissance(modif3);
+				CrudActeurs.miseAJourTable(session.getConnection(), acteur);
+			
+			} else if (menu3 == 4) {
+				System.out.println("Si vous voulez lui changer de sexe, tappez Homme ou Femme :");
+				
+				Scanner scModif4 = new Scanner(System.in);
+				String modif4 = scModif4.nextLine();
+				
+				acteur.setSexe(modif4);
+				CrudActeurs.miseAJourTable(session.getConnection(), acteur);	
+			}	
 		}
 		
 
