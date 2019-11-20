@@ -14,6 +14,11 @@
 
 ## Description technique 
 
+   ### Description des méthodes :
+
+    4 Méthodes de CRUD (Create,Read,Update,Delete) pour les tables Acteur et Film.
+    1 Méthode pour chaque menu et sous menu.
+
 
 
 ## Notice
