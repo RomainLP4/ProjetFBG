@@ -74,7 +74,7 @@ public class Menu {
 				}
 	}
 	
-	public static void sousMenuActeur() {
+	public static void sousMenuActeur() throws SQLException, MalformedURLException, IOException {
 
 			do{
 				  System.out.print("Et maintenant, que voulez vous faire ?");
@@ -124,7 +124,7 @@ public class Menu {
 				CrudActeurs.suppressionDonnee(session.getConnection(), acteur);
 			}
 				
-				
+	}		
 			
 			public void sousMenuUpdateActeur() {
 				
