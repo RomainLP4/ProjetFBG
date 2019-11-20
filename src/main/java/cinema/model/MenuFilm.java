@@ -67,6 +67,7 @@ public class MenuFilm {
 			Film film = Requete.detailFilm(Requete.idFilm(titreASupp));
 			CrudFilms.suppressionFilm(session.getConnection(), film);
 		}
+		
 
 	}
 
