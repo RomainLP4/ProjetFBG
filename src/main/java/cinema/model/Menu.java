@@ -4,15 +4,19 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.Scanner;
+
+import api.Requete;
+
 import java.util.*;
 import cinema.model.Acteur;
 import cinema.model.Film;
 import jdbc.CrudActeurs;
 import jdbc.CrudFilms;
-import jdbc.Requete;
 import jdbc.Session;
 
 public class Menu {
+	
+	
 
 //Session session = new Session();
 // Acteur tom = new Acteur(500,name, birth, lieu, sexe, movies<titre>);
@@ -44,13 +48,23 @@ public class Menu {
 			
 			
 			
-	static Session session = new Session();
-	static Scanner sc = new Scanner(System.in);
-	static int menu = 0;
-	static int menu2 = 0;
-	int menu3 = 0;
+	
+	//static Session session = new Session();
+	//static Scanner sc = new Scanner(System.in);
+	//static int menu = 0;
+	//static int menu2 = 0;
+	//static int menu3 = 0;
+	
+	
+	
+	
 
 	public static void choixDeLaTable() throws SQLException {
+		
+		Session session = new Session();
+		Scanner sc = new Scanner(System.in);
+		
+		int menu = 0;
 	
 		 do{
 			  System.out.print("Bonjour, quelle table voulez vous afficher?\n 1 Acteur\n 2 Film \n");
@@ -76,13 +90,18 @@ public class Menu {
 	
 	public static void sousMenuActeur() throws SQLException, MalformedURLException, IOException {
 
+		Session session = new Session();
+		Scanner sc = new Scanner(System.in);
+		
+		int menu2 = 0;
+			
 			do{
 				  System.out.print("Et maintenant, que voulez vous faire ?");
 				  System.out.println("\n1 | Ajouter un acteur.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un acteur.");
 				    while(!sc.hasNextInt()){
 				    	System.out.println("Entrée incorrect, recommencez");
 				    	sc.next();
-				    } menu2= sc.nextInt();
+				    } menu2 = sc.nextInt();
 			}
 				    	
 			while (menu2 < 1 || menu2 > 4) ;
@@ -92,7 +111,7 @@ public class Menu {
 				System.out.println("Vous allez créer un nouvel acteur !");
 				System.out.println("Entrez son prénom et son nom :");
 				
-				Scanner scActeur = new Scanner(System.in);
+				 Scanner scActeur = new Scanner(System.in);
 				String saisie = scActeur.nextLine();
 				
 				Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
@@ -113,12 +132,13 @@ public class Menu {
 				Scanner scActeur = new Scanner(System.in);
 				String saisie = scActeur.nextLine();
 				Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
+				sousMenuUpdateActeur();
 				
 			} else if (menu2 == 4) {
 				System.out.println("Vous avez maintenant la possibilité de supprimer un acteur.");
 				System.out.println("Quel acteur ou actrice voulez-vous supprimer ?\n Entrez son prénom et son nom :");
 				
-				Scanner scActeur = new Scanner(System.in);
+				 Scanner scActeur = new Scanner(System.in);
 				String saisie = scActeur.nextLine();
 				Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
 				
@@ -127,54 +147,72 @@ public class Menu {
 				
 	}		
 			
-			public void sousMenuUpdateActeur() {
+		public static void sousMenuUpdateActeur() throws SQLException, MalformedURLException, IOException {
+			
+			Session session = new Session();
+			Scanner sc = new Scanner(System.in);
+			
+			int menu3;
 				
 				System.out.println("Quel paramètre voulez-vous modifier ?");
 				System.out.println(" Pour modifier son nom, tappez 1.\n Pour modifier sa date de naissance, tappez 2.\n Pour modifier son lieu de naissance, tappez 3. \n Pour lui changer de sexe, tappez 4 !...");
 				
-					do{
+				do{
 					 
 					    while(!sc.hasNextInt()){
 					    	System.out.println("Entrée incorrect, recommencez");
 					    	sc.next();
-					    } menu3= sc.nextInt();
-				}
-					    	
-				while (menu3 < 1 || menu3 > 4) ;
+					    } menu3 = sc.nextInt();
+					    
+				}while (menu3 < 1 || menu3 > 4) ;
 				
 						
 				if (menu3 == 1) {
+					
 					System.out.println("Comment voulez-vous l'appeler ?");
 					
 					Scanner scModif = new Scanner(System.in);
 					String modif = scModif.nextLine();
-				
-				    acteur.setNoms(modif);
+					Acteur acteur = Requete.actorDetails(Requete.acteur(modif));
+					
+					acteur.setNoms(modif);
 				    CrudActeurs.miseAJourTable(session.getConnection(), acteur);
 				
+				    
+				    
+				    
+				    
+				    
 				} else if (menu3 == 2) {
+					
 					System.out.println("Quand voulez vous qu'il ou elle soit né(e) ?");
 					
 					Scanner scModif2 = new Scanner(System.in);
 					String modif2 = scModif2.nextLine();
+					Acteur acteur = Requete.actorDetails(Requete.acteur(modif2));
 					
 					acteur.setDateDeNaissance(modif2);
 					CrudActeurs.miseAJourTable(session.getConnection(), acteur);
 				
 				} else if (menu3 == 3) {
-					System.out.println("Où voulez-vous qu'il ou elle soit né(e) ? ");
 					
+					System.out.println("Où voulez-vous qu'il ou elle soit né(e) ? ");
+									
 					Scanner scModif3 = new Scanner(System.in);
 					String modif3 = scModif3.nextLine();
+					Acteur acteur = Requete.actorDetails(Requete.acteur(modif3));
+					
 					
 					acteur.setLieuDeNaissance(modif3);
 					CrudActeurs.miseAJourTable(session.getConnection(), acteur);
 				
 				} else if (menu3 == 4) {
+					
 					System.out.println("Si vous voulez lui changer de sexe, tappez Homme ou Femme :");
 					
 					Scanner scModif4 = new Scanner(System.in);
 					String modif4 = scModif4.nextLine();
+					Acteur acteur = Requete.actorDetails(Requete.acteur(modif4));
 					
 					acteur.setSexe(modif4);
 					CrudActeurs.miseAJourTable(session.getConnection(), acteur);	
@@ -190,3 +228,4 @@ public class Menu {
 		
 	
 }
+

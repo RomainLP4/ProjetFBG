@@ -186,7 +186,7 @@ public class App {
 //	
 //	//////////////////////////////////////////////////////////////////////////
 //	
-//	Menu menu = new Menu();
+	Menu menu = new Menu();
 	//Menu.choixDeLaTable();
 	Menu.sousMenuActeur();
 	
