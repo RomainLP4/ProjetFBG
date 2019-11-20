@@ -15,7 +15,7 @@ public class MenuFilm {
 	static int menu = 0;
 	static int menu2 = 0;
 	static int menu3 = 0;
-	private static String titreAModif;
+	//private static String titreAModif;
 
 	public static void sousMenuFilm() throws SQLException, MalformedURLException, IOException {
 
@@ -95,8 +95,8 @@ public class MenuFilm {
 			Scanner scModif = new Scanner(System.in);
 			String modifTitre = scModif.nextLine();
 
-			Requete.detailFilm(Requete.idFilm(titreAModif)).setTitre(modifTitre);
-			CrudFilms.miseAJourTableFilm(session.getConnection(), Requete.detailFilm(Requete.idFilm(modifTitre)));
+			film.setTitre(modifTitre);
+			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
 
 		} else if (menu3 == 2) {
 			System.out.println("Quand voulez vous qu'il soit sorti ?");
@@ -104,8 +104,8 @@ public class MenuFilm {
 			Scanner scModif2 = new Scanner(System.in);
 			String modifAnnee = scModif2.nextLine();
 
-			Requete.detailFilm(Requete.idFilm(titreAModif)).setAnnee(modifAnnee);
-			CrudFilms.miseAJourTableFilm(session.getConnection(), Requete.detailFilm(Requete.idFilm(modifAnnee)));
+			film.setAnnee(modifAnnee);
+			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
 
 		} else if (menu3 == 3) {
 			System.out.println("De quel genre voulez vous qu'il soit ? ");
@@ -113,8 +113,8 @@ public class MenuFilm {
 			Scanner scModif3 = new Scanner(System.in);
 			String modifGenre = scModif3.nextLine();
 
-			Requete.detailFilm(Requete.idFilm(titreAModif)).setGenre(modifGenre);
-			CrudFilms.miseAJourTableFilm(session.getConnection(), Requete.detailFilm(Requete.idFilm(modifGenre)));
+			film.setGenre(modifGenre);
+			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
 
 		}
 
