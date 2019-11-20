@@ -6,6 +6,11 @@
     * Balcon Sophie
     * Gallard Romain
 
+### Repartition des taches
+    Nous nous sommes réparties les taches de façon à ce qu'une seule personne travail sur un fichier à la fois.
+    Le travail réaliser par une personne servant par la suite de base à d'autres travaux similaires ( par ex le CRUD acteur servant de base au CRUD film ). Une fois une tache terminé un autre membre devais optimiser ce code et parfois le refactoriser en méthodes.
+    Par moment nous travaillions tous ensemble sur la même machine pour des taches plus complexes et difficilement fragmentable.
+
 ## Description du programme
 
     Ce programme permet à un utilisateur via la console de consulter et modifier une base de donnée.
@@ -35,4 +40,4 @@
 
 ## Exemple
 
-
+// TODO Inserer des screenshots du programme.
