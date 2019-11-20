@@ -98,6 +98,7 @@ public class Menu {
 				Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
 				CrudActeurs.creationActeur(session.getConnection(), acteur);
 				
+			
 				
 				// TODO si acteur inconnu
 				
