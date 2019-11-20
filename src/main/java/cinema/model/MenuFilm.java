@@ -15,6 +15,7 @@ public class MenuFilm {
 	static int menu = 0;
 	static int menu2 = 0;
 	static int menu3 = 0;
+	private static String titreAModif;
 
 	public static void sousMenuFilm() throws SQLException, MalformedURLException, IOException {
 
@@ -36,9 +37,9 @@ public class MenuFilm {
 			System.out.println("Entrez son titre :");
 
 			Scanner scFilm = new Scanner(System.in);
-			String saisie = scFilm.nextLine();
+			String saisieTitre = scFilm.nextLine();
 
-			Film film = Requete.detailFilm(Requete.idFilm(saisie));
+			Film film = Requete.detailFilm(Requete.idFilm(saisieTitre));
 			CrudFilms.creationFilm(session.getConnection(), film);
 
 			// TODO si Film inconnu
@@ -52,9 +53,9 @@ public class MenuFilm {
 			System.out.println("Quel film voulez-vous modifier ? ");
 
 			Scanner scFilm = new Scanner(System.in);
-			String saisie = scFilm.nextLine();
-			Film film = Requete.detailFilm(Requete.idFilm(saisie));
-			
+			String titreAModif = scFilm.nextLine();
+			Film film = Requete.detailFilm(Requete.idFilm(titreAModif));
+			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
 			MenuFilm.sousMenuUpdateFilm();
 
 		} else if (menu2 == 4) {
@@ -62,9 +63,8 @@ public class MenuFilm {
 			System.out.println("Quel film voulez-vous supprimer ?\n Entrez son nom :");
 
 			Scanner scFilm = new Scanner(System.in);
-			String saisie = scFilm.nextLine();
-			Film film = Requete.detailFilm(Requete.idFilm(saisie));
-
+			String titreASupp = scFilm.nextLine();
+			Film film = Requete.detailFilm(Requete.idFilm(titreASupp));
 			CrudFilms.suppressionFilm(session.getConnection(), film);
 		}
 
@@ -74,8 +74,8 @@ public class MenuFilm {
 		System.out.println("Quel paramètre voulez-vous modifier ?");
 		System.out.println(" Pour modifier son nom, tappez 1.\n Pour modifier son annee de sortie, tappez 2.\n Pour modifier son genre, tappez 3 !...");
 		Scanner scFilm = new Scanner(System.in);
-		String saisie = scFilm.nextLine();
-		Film film = Requete.detailFilm(Requete.idFilm(saisie));
+		String saisieTitre = scFilm.nextLine();
+		Film film = Requete.detailFilm(Requete.idFilm(saisieTitre));
 
 		do {
 
@@ -92,28 +92,28 @@ public class MenuFilm {
 			System.out.println("Comment voulez-vous l'appeler ?");
 
 			Scanner scModif = new Scanner(System.in);
-			String modif = scModif.nextLine();
+			String modifTitre = scModif.nextLine();
 
-			film.setTitre(modif);
-			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
+			Requete.detailFilm(Requete.idFilm(titreAModif)).setTitre(modifTitre);
+			CrudFilms.miseAJourTableFilm(session.getConnection(), Requete.detailFilm(Requete.idFilm(modifTitre)));
 
 		} else if (menu3 == 2) {
 			System.out.println("Quand voulez vous qu'il soit sorti ?");
 
 			Scanner scModif2 = new Scanner(System.in);
-			String modif2 = scModif2.nextLine();
+			String modifAnnee = scModif2.nextLine();
 
-			film.setAnnee(modif2);
-			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
+			Requete.detailFilm(Requete.idFilm(titreAModif)).setAnnee(modifAnnee);
+			CrudFilms.miseAJourTableFilm(session.getConnection(), Requete.detailFilm(Requete.idFilm(modifAnnee)));
 
 		} else if (menu3 == 3) {
 			System.out.println("De quel genre voulez vous qu'il soit ? ");
 
 			Scanner scModif3 = new Scanner(System.in);
-			String modif3 = scModif3.nextLine();
+			String modifGenre = scModif3.nextLine();
 
-			film.setGenre(modif3);
-			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
+			Requete.detailFilm(Requete.idFilm(titreAModif)).setGenre(modifGenre);
+			CrudFilms.miseAJourTableFilm(session.getConnection(), Requete.detailFilm(Requete.idFilm(modifGenre)));
 
 		}
 
