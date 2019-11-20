@@ -15,40 +15,7 @@ import jdbc.CrudFilms;
 import jdbc.Session;
 
 public class Menu {
-	
-	
-
-//Session session = new Session();
-// Acteur tom = new Acteur(500,name, birth, lieu, sexe, movies<titre>);
-// Acteur julia = req.actorDetails(5);
-	// System.out.println(">> "+julia.getLieuDeNaissance());
-
-//		Acteur tom = Requete.actorDetails(Requete.acteur("Tom cruise"));
-//		CrudActeurs.creationActeur(session.getConnection(), tom);
-//		Requete.actorFilm(Requete.acteur("Tom cruise"));
-
-			// Acteur julia = Requete.actorDetails(Requete.acteur("Julia Roberts"));
-//		CrudActeurs.creationActeur(session.getConnection(), julia);
-
-			// CrudActeurs.afficherTable(session.getConnection());
-//		julia.setNoms("Erin Brokovitch");
-//		CrudActeurs.miseAJourTable(session.getConnection(), julia);
-
-			// CrudActeurs.suppressionDonnee(session.getConnection(), julia);
-			// Requete.detailFilm(11);
-			// Requete.detailFilm(Requete.idFilm("star wars"));
-			// Film shrek = Requete.detailFilm(Requete.idFilm("shrek"));
-//		CrudFilms.creationFilm(session.getConnection(), shrek);
-
-			// CrudFilms.afficherTableFilm(session.getConnection());
-//		shrek.setAnnee("2001");
-//		CrudFilms.miseAJourTableFilm(session.getConnection(), shrek);
-
-			// CrudFilms.suppressionFilm(session.getConnection(), shrek);
-			
-			
-			
-	
+		
 	static Session session = new Session();
 	static Scanner sc = new Scanner(System.in);
 	//static int menu = 0;
@@ -182,7 +149,7 @@ public class Menu {
 					//Acteur acteur = Requete.actorDetails(Requete.acteur(modif));
 					
 					acteur.setNoms(modif);
-					System.out.println("noms : "+acteur.getNoms());
+					//System.out.println("noms : "+acteur.getNoms());
 				    CrudActeurs.miseAJourTable(session.getConnection(), acteur);
 				
 				    				 							    
@@ -192,7 +159,7 @@ public class Menu {
 									
 					Scanner scModif2 = new Scanner(System.in);
 					String modif2 = scModif2.nextLine();
-					//Acteur acteur = Requete.actorDetails(Requete.acteur(modif2));
+					Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
 					
 					acteur.setDateDeNaissance(modif2);
 					CrudActeurs.miseAJourTable(session.getConnection(), acteur);
