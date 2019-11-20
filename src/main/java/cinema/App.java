@@ -158,7 +158,18 @@ while (menu < 1 || menu > 2) ;
 				acteur.setSexe(modif4);
 				CrudActeurs.miseAJourTable(session.getConnection(), acteur);	
 			}	
+		
+		} else if (menu2 == 4) {
+			System.out.println("Vous avez maintenant la possibilité de supprimer un acteur.");
+			System.out.println("Quel acteur ou actrice voulez-vous supprimer ?\n Entrez son prénom et son nom :");
+			
+			Scanner scActeur = new Scanner(System.in);
+			String saisie = scActeur.nextLine();
+			Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
+			
+			CrudActeurs.suppressionDonnee(session.getConnection(), acteur);
 		}
+		
 		
 
 
