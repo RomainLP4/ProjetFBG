@@ -23,10 +23,10 @@
 ## MCD et MLD du projet
 
     MCD
-![](https://nsa40.casimages.com/img/2019/11/20/mini_191120102039156057.png)
+![](https://nsa40.casimages.com/img/2019/11/20/191120102039156057.png)
 
     MLD
-![](https://nsa40.casimages.com/img/2019/11/20/mini_191120102039233887.png)
+![](https://nsa40.casimages.com/img/2019/11/20/191120102039233887.png)
 
 ## Exemple
 
