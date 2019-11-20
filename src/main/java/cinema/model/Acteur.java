@@ -1,5 +1,6 @@
 package cinema.model;
 
+
 import java.util.ArrayList;
 
 public class Acteur {
