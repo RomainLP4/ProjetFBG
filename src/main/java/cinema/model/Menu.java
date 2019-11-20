@@ -47,7 +47,7 @@ public class Menu {
 	static Session session = new Session();
 	static Scanner sc = new Scanner(System.in);
 	static int menu = 0;
-	int menu2 = 0;
+	static int menu2 = 0;
 	int menu3 = 0;
 
 	public static void choixDeLaTable() throws SQLException {
@@ -71,11 +71,10 @@ public class Menu {
 				} else {
 					System.out.println("Vous avez demandé d'afficher la table Film");
 					CrudFilms.afficherTableFilm(session.getConnection());
-	
+				}
 	}
-	}
 	
-	public void sousMenuActeur() {
+	public static void sousMenuActeur() {
 
 			do{
 				  System.out.print("Et maintenant, que voulez vous faire ?");
