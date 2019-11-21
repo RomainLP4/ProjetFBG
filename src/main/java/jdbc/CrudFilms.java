@@ -3,10 +3,32 @@ package jdbc;
 import java.sql.*;
 import java.text.MessageFormat;
 
+import cinema.model.Acteur;
+import cinema.model.Film;
+
 public class CrudFilms {
 
 	public final static String ACTEUR_TABLE = "cinema.acteur";
 	public final static String FILM_TABLE = "cinema.film";
+	
+	
+	public static Film getFilm (Connection connect,String titre) throws SQLException {
+		String req = "select * from cinema.film where Titre=?";
+		PreparedStatement etat = connect.prepareStatement(req);
+		etat.setString(1, titre);
+		ResultSet resultat = etat.executeQuery();
+		Film film = null;
+		while(resultat.next()) {
+			int idf = resultat.getInt("Idf");
+			String titres = resultat.getString("Titre");
+			String annee = resultat.getString("Annee");
+			String genre = resultat.getString("Genre");
+			
+			film = new Film(idf, titre, annee, genre);
+		}
+		etat.close();
+		return film;
+	}
 
 	// READ ok
 	public static void afficherTableFilm(Connection connect) throws SQLException {
