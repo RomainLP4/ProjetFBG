@@ -63,8 +63,7 @@ public class Requete {
 	}
 
 	public static int acteur(String actor) throws MalformedURLException, IOException {
-		String urlActorID = "https://api.themoviedb.org/3/search/person?api_key=" + IMDB_KEY + "&language=en-US&query="
-				+ actor + "&page=1&include_adult=false\r\n" + "";
+		String urlActorID = "https://api.themoviedb.org/3/search/person?api_key=" + IMDB_KEY + "&language=en-US&query=" + actor + "&page=1&include_adult=false\r\n" + "";
 
 		String jsonText = IOUtils.toString(new URL(urlActorID), Charset.forName("UTF-8"));
 		writeJson(jsonText);
@@ -102,10 +101,10 @@ public class Requete {
 		else {
 			 sexe = "Inconnu";
 		}
-		System.out.println(lieu);
-		System.out.println(name);
-		System.out.println(birth);
-		System.out.println(sexe);
+//		System.out.println(lieu);
+//		System.out.println(name);
+//		System.out.println(birth);
+//		System.out.println(sexe);
 		return new Acteur(actorID, name, birth, lieu, sexe);
 
 

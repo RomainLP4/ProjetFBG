@@ -2,6 +2,8 @@ package jdbc;
 import java.sql.*;
 import java.text.MessageFormat;
 
+import cinema.model.Acteur;
+
 public class CrudActeurs 
 {
 	public final static String ACTEUR_TABLE = "cinema.acteur";
@@ -29,7 +31,25 @@ public class CrudActeurs
 			System.out.println();
 		}		
 	}
-	
+	//recup l'acteur par son nom dans la DB
+	public static Acteur getActeur (Connection connect,String nom) throws SQLException {
+		String req = "select * from cinema.acteur where Nom=?";
+		PreparedStatement etat = connect.prepareStatement(req);
+		etat.setString(1, nom);
+		ResultSet resultat = etat.executeQuery();
+		Acteur acteur = null;
+		while(resultat.next()) {
+			int ida=resultat.getInt("Ida");
+			String noms=resultat.getString("Nom");
+			String dateDeNaissance=resultat.getString("DateDeNaissance");
+			String lieuDeNaissance=resultat.getString("lieuDeNaissance");
+			String sexe=resultat.getString("Sexe");
+			acteur = new Acteur(ida, noms, dateDeNaissance, lieuDeNaissance, sexe);
+			
+		}
+		etat.close();
+		return acteur;
+	}
 	//CREATE ok
 	public static void creationActeur (Connection connect, cinema.model.Acteur nvActeur)
 	{
