@@ -88,8 +88,8 @@ public class CrudActeurs
 	// DELETE OK
 	public static void suppressionDonnee (Connection connect, cinema.model.Acteur acteurSupprimer) throws SQLException 
 	{
-		PreparedStatement etat = connect.prepareStatement("delete from cinema.acteur where IDa = ? ");
-		etat.setInt(1, acteurSupprimer.getIda());
+		PreparedStatement etat = connect.prepareStatement("delete from cinema.acteur where Nom = ? ");
+		etat.setString(1, acteurSupprimer.getNoms());
 
 		
 		etat.executeUpdate();

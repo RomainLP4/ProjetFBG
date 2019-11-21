@@ -109,8 +109,8 @@ public class Menu {
 				
 				//Scanner scActeur = new Scanner(System.in);
 				String saisie = sc.next();
-				Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));//get from DB?
-				
+				//Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));//get from DB?
+				Acteur acteur = CrudActeurs.getActeur(session.getConnection(), saisie);
 				CrudActeurs.suppressionDonnee(session.getConnection(), acteur);
 			}
 				
