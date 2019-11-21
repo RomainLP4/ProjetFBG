@@ -3,30 +3,28 @@ package jdbc;
 import java.sql.*;
 import java.text.MessageFormat;
 
-import cinema.model.Acteur;
 import cinema.model.Film;
 
 public class CrudFilms {
 
 	public final static String ACTEUR_TABLE = "cinema.acteur";
 	public final static String FILM_TABLE = "cinema.film";
-	
-	
-	public static Film getFilm (Connection connect,String titre) throws SQLException {
+
+	public static Film getFilm(Connection connect, String titre) throws SQLException {
 		String req = "select * from cinema.film where Titre=?";
 		PreparedStatement etat = connect.prepareStatement(req);
-		
+
 		etat.setString(1, titre);
 		System.out.println(titre);
 		ResultSet resultat = etat.executeQuery();
 		Film film = null;
-		while(resultat.next()) {
+		while (resultat.next()) {
 			System.out.println("i'm here");
 			int idf = resultat.getInt("idf");
 			String titres = resultat.getString("Titre");
 			String annee = resultat.getString("Annee");
 			String genre = resultat.getString("Genre");
-			
+
 			film = new Film(idf, titres, annee, genre);
 		}
 		etat.close();
@@ -63,7 +61,6 @@ public class CrudFilms {
 			etat.setString(2, nvFilm.getTitre());
 			etat.setString(3, nvFilm.getAnnee());
 			etat.setString(4, nvFilm.getGenre());
-			
 
 			etat.executeUpdate();
 			etat.close();
@@ -76,8 +73,9 @@ public class CrudFilms {
 
 	// UPDATE OK
 	public static void miseAJourTableFilm(Connection connect, cinema.model.Film filmModifier) throws SQLException {
-		PreparedStatement etat = connect.prepareStatement("update cinema.film set Titre = ?, Annee = ?, Genre = ? where idf = ?");
-		
+		PreparedStatement etat = connect
+				.prepareStatement("update cinema.film set Titre = ?, Annee = ?, Genre = ? where idf = ?");
+
 		etat.setString(1, filmModifier.getTitre());
 		etat.setString(2, filmModifier.getAnnee());
 		etat.setString(3, filmModifier.getGenre());

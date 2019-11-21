@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Initialise une connexion vers la base à partir des informations se trouvant dans la classe Parametres.
+ * Initialise une connexion vers la base à partir des informations se trouvant
+ * dans la classe Parametres.
  * 
  *
  */
@@ -23,9 +24,10 @@ public class Session {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Retourne la connection déjà initialisée.
+	 * 
 	 * @return la connection déjà initialisée.
 	 */
 	public Connection getConnection() {
