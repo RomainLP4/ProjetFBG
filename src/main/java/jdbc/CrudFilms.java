@@ -86,9 +86,9 @@ public class CrudFilms {
 
 	// DELETE OK
 	public static void suppressionFilm(Connection connect, cinema.model.Film filmSupprimer) throws SQLException {
-		PreparedStatement etat = connect.prepareStatement("delete from cinema.film where IDf = ? ");
+		PreparedStatement etat = connect.prepareStatement("delete from cinema.film where Titre = ? ");
 		
-		etat.setInt(1, filmSupprimer.getIdf());
+		etat.setString(1, filmSupprimer.getTitre());
 
 		etat.executeUpdate();
 		etat.close();
