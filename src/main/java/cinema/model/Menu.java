@@ -118,15 +118,10 @@ public class Menu {
 			
 		public void sousMenuUpdateActeur() throws SQLException, MalformedURLException, IOException {
 			
-			//sousMenuActeur();
-			
-			
-//			Session session = new Session();
-//			Scanner sc = new Scanner(System.in);
+
 			
 			int menu3;
 				
-			//Scanner scActeur = new Scanner(System.in);
 			String saisie = sc.next();
 			Acteur acteur = CrudActeurs.getActeur(session.getConnection(), saisie);// on devrai pas plutot get from acteur DB ?	
 			if (acteur==null) System.out.println("ERREEEEEUR");

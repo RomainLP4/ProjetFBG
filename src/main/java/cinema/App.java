@@ -151,8 +151,11 @@ public class App {
 //		}
 //
 		Menu menu = new Menu();
-		menu.choixDeLaTable();
-		menu.sousMenuActeur();
+		MenuFilm menufilm = new MenuFilm();
+		
+		//menu.choixDeLaTable();
+		//menu.sousMenuActeur();
+		menufilm.sousMenuFilm();
 	}
 
 }

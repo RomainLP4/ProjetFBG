@@ -19,12 +19,13 @@ public class CrudFilms {
 		ResultSet resultat = etat.executeQuery();
 		Film film = null;
 		while(resultat.next()) {
-			int idf = resultat.getInt("Idf");
+			System.out.println("i'm here");
+			int idf = resultat.getInt("idf");
 			String titres = resultat.getString("Titre");
 			String annee = resultat.getString("Annee");
 			String genre = resultat.getString("Genre");
 			
-			film = new Film(idf, titre, annee, genre);
+			film = new Film(idf, titres, annee, genre);
 		}
 		etat.close();
 		return film;
