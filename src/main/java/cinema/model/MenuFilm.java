@@ -64,9 +64,10 @@ public class MenuFilm {
 			System.out.println("Quel film voulez-vous supprimer ?\n Entrez son nom :");
 
 			//Scanner scFilm = new Scanner(System.in);
-			String titreASupp = sc.next();
+			String titreASupp = sc.nextLine();
 			//Film film = Requete.detailFilm(Requete.idFilm(titreASupp));//TODO a modifier par GetFilm
 			Film film = CrudFilms.getFilm(session.getConnection(), titreASupp);
+			
 			if (film==null)System.out.println("EERRRRRRRRR");
 			CrudFilms.suppressionFilm(session.getConnection(), film);
 		}

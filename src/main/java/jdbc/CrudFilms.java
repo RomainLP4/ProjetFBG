@@ -15,7 +15,9 @@ public class CrudFilms {
 	public static Film getFilm (Connection connect,String titre) throws SQLException {
 		String req = "select * from cinema.film where Titre=?";
 		PreparedStatement etat = connect.prepareStatement(req);
+		
 		etat.setString(1, titre);
+		System.out.println(titre);
 		ResultSet resultat = etat.executeQuery();
 		Film film = null;
 		while(resultat.next()) {
@@ -88,7 +90,6 @@ public class CrudFilms {
 	// DELETE OK
 	public static void suppressionFilm(Connection connect, cinema.model.Film filmSupprimer) throws SQLException {
 		PreparedStatement etat = connect.prepareStatement("delete from cinema.film where Titre = ? ");
-		
 		etat.setString(1, filmSupprimer.getTitre());
 
 		etat.executeUpdate();
