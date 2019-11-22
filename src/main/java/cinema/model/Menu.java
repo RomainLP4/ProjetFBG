@@ -1,262 +1,134 @@
 package cinema.model;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.sql.SQLException;
-import java.util.Scanner;
-
-import api.Requete;
-
-import java.util.*;
-import cinema.model.Acteur;
-import cinema.model.Film;
 import jdbc.CrudActeurs;
 import jdbc.CrudFilms;
 import jdbc.Session;
 
-public class Menu {
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.sql.SQLException;
+import java.util.*;
 
+import api.Requete;
+
+public class Menu
+{
 	Session session = new Session();
-	Scanner sc = new Scanner(System.in);
-
-	public void choixDeLaTable() throws SQLException, MalformedURLException, IOException {
-
-		int menu = 0;
-
-		do {
-			System.out.print("Bonjour, quelle table voulez vous afficher?\n 1 Acteur\n 2 Film \n");
-			while (!sc.hasNextInt()) {
-
+	Scanner entreeClavier = new Scanner(System.in);
+	public static String menuPrincipal = " 1. Acteur\n 2. Film\nVotre choix :";
+	public static String sousMenu1 = "Et maintenant, que voulez vous faire ?\n1 | Ajouter un acteur.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un acteur. \n5 | Sortir.";
+	public static String sousMenu2 = "Quel paramètre voulez-vous modifier ?\n Pour modifier son nom, tapez 1.\n Pour modifier sa date de naissance, tapez 2.\n Pour modifier son lieu de naissance, tapez 3. \n Pour lui changer de sexe, tapez 4 !...";
+	public static int choixMenuGeneral;
+	public static int choixSousMenu1;
+	public static int choixSousMenu2;
+	
+	public void menuGeneral () throws SQLException 
+	{
+		do 
+		{								
+			while(!entreeClavier.hasNextInt())
+			{	        
 				System.out.println("Entrée incorrect, recommencez");
-				System.out.println("Bonjour, quelle table voulez vous afficher?\n 1 Acteur\n 2 Film \n");
-				sc.next();
-			}
-			menu = sc.nextInt();
+				System.out.println(menuPrincipal);
+				entreeClavier.next();
+			} 
+			choixMenuGeneral = entreeClavier.nextInt();
+		}
+		while(choixMenuGeneral < 1 || choixMenuGeneral > 2);
 
-		} while (menu < 1 || menu > 2);
-
-		if (menu == 1) {
+		if (choixMenuGeneral == 1) {
 			System.out.println("Vous avez demandé d'afficher la table Acteur.");
 			CrudActeurs.afficherTable(session.getConnection());
-			sousMenuActeur();
-
 		} else {
 			System.out.println("Vous avez demandé d'afficher la table Film");
 			CrudFilms.afficherTableFilm(session.getConnection());
-			sousMenuFilm();
 		}
 	}
-
-	public void sousMenuActeur() throws SQLException, MalformedURLException, IOException {
-
-		int menu2 = 0;
-
-		do {
-			System.out.print("Et maintenant, que voulez vous faire ?");
-			System.out.println(
-					"\n1 | Ajouter un acteur.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un acteur.");
-			while (!sc.hasNextInt()) {
+	public void sousMenuActeur () throws MalformedURLException, IOException, SQLException 
+	{
+		do 
+		{			
+			while(!entreeClavier.hasNextInt())
+			{
 				System.out.println("Entrée incorrect, recommencez");
-				sc.next();
-			}
-			menu2 = sc.nextInt();
+		    	entreeClavier.next();
+		    } choixSousMenu1 = entreeClavier.nextInt();
 		}
-
-		while (menu2 < 1 || menu2 > 4);
-
-		if (menu2 == 1) {
+		while (choixSousMenu1 < 1 || choixSousMenu1 > 5) ;
+		
+		switch (choixSousMenu1) {
+		case 1 :
 			System.out.println("Vous allez créer un nouvel acteur !");
-			System.out.println("Entrez son prénom et son nom :");
-
-			String saisie = sc.next();
-
-			Acteur acteur = Requete.actorDetails(Requete.acteur(saisie));
-			CrudActeurs.creationActeur(session.getConnection(), acteur);
-
+			System.out.println("Entrez son prénom et son nom :");			
+			String saisieNom = entreeClavier.next();			
+			Acteur acteurCree = Requete.actorDetails(Requete.acteur(saisieNom));
+			CrudActeurs.creationActeur(session.getConnection(), acteurCree);
+			System.out.println("Vous avez ajouté " + saisieNom);
+			break;
 			// TODO si acteur inconnu
-
-		} else if (menu2 == 2) {
+		case 2 :
 			System.out.println("Vous voulez réafficher la table Acteur. Et bien, la voici :");
-			CrudActeurs.afficherTable(session.getConnection());
-
-		} else if (menu2 == 3) {
+			CrudActeurs.afficherTable(session.getConnection());	
+			break;		
+		case 3 :
 			System.out.println("Vous allez maintenant modifier un ou plusieurs paramètres d'un acteur.");
-			System.out.println("Quel acteur ou actrice voulez-vous modifier ?\n Entrez son prénom et son nom :");
-
+			System.out.print("Quel acteur ou actrice voulez-vous modifier ?\nEntrez son prénom et son nom :");
 			sousMenuUpdateActeur();
-
-		} else if (menu2 == 4) {
+			break;			
+		case 4 :
 			System.out.println("Vous avez maintenant la possibilité de supprimer un acteur.");
-			System.out.println("Quel acteur ou actrice voulez-vous supprimer ?\n Entrez son prénom et son nom :");
-
-			String saisie = sc.next();
-
-			Acteur acteur = CrudActeurs.getActeur(session.getConnection(), saisie);
-			CrudActeurs.suppressionDonnee(session.getConnection(), acteur);
+			System.out.print("Quel acteur ou actrice voulez-vous supprimer ?\n Entrez son prénom et son nom :");			
+			String saisie = entreeClavier.next();
+			Acteur acteurSupp = CrudActeurs.getActeur(session.getConnection(), saisie);
+			CrudActeurs.suppressionDonnee(session.getConnection(), acteurSupp);
+			System.out.println("Vous avez supprimé : " + saisie);
+			break;
+		case 5 :
+			System.out.println("Au revoir, merci de votre visite !");
+			System.exit(1);
 		}
-
 	}
-
-	public void sousMenuUpdateActeur() throws SQLException, MalformedURLException, IOException {
-
-		int menu3;
-
-		String saisie = sc.next();
+	public void sousMenuUpdateActeur () throws MalformedURLException, IOException, SQLException
+	{
+		String saisie = entreeClavier.next();
 		Acteur acteur = CrudActeurs.getActeur(session.getConnection(), saisie);
-
-		if (acteur == null)
-			System.out.println("ERREEEEEUR");
-		System.out.println("Quel paramètre voulez-vous modifier ?");
-		System.out.println(
-				" Pour modifier son nom, tappez 1.\n Pour modifier sa date de naissance, tappez 2.\n Pour modifier son lieu de naissance, tappez 3. \n Pour lui changer de sexe, tappez 4 !...");
-
-		do {
-			while (!sc.hasNextInt()) {
+		if (acteur == null) {
+		System.out.print("ERREEEEEUR \n Quel paramètre voulez-vous modifier ?");
+		System.out.println(sousMenu2);
+		}
+		do 
+		{
+			while(!entreeClavier.hasNextInt())
+			{
 				System.out.println("Entrée incorrect, recommencez");
-				sc.next();
-			}
-			menu3 = sc.nextInt();
-
-		} while (menu3 < 1 || menu3 > 4);
-
-		sc.nextLine();
-		if (menu3 == 1) {
-
+		    	entreeClavier.next();
+		    } choixSousMenu2 = entreeClavier.nextInt();
+		}
+		while (choixSousMenu2 < 1 || choixSousMenu2 > 4) ;
+		
+		entreeClavier.nextLine();
+		if (choixSousMenu2 == 1) {
 			System.out.println("Comment voulez-vous l'appeler ?");
-
-			String modif = sc.nextLine();
-
-			acteur.setNoms(modif);
+			String modifNom = entreeClavier.next();
+			acteur.setNoms(modifNom);
 			System.out.println("noms : " + acteur.getNoms());
 			CrudActeurs.miseAJourTable(session.getConnection(), acteur);
-
-		} else if (menu3 == 2) {
-
+		} else if (choixSousMenu2 == 2) {
 			System.out.println("Quand voulez vous qu'il ou elle soit né(e) ?");
-
-			String modif2 = sc.next();
-
-			acteur.setDateDeNaissance(modif2);
+			String modifAnnee = entreeClavier.next();
+			acteur.setDateDeNaissance(modifAnnee);
 			CrudActeurs.miseAJourTable(session.getConnection(), acteur);
-
-		} else if (menu3 == 3) {
-
+		} else if (choixSousMenu2 == 3) {
 			System.out.println("Où voulez-vous qu'il ou elle soit né(e) ? ");
-
-			String modif3 = sc.next();
-
-			acteur.setLieuDeNaissance(modif3);
+			String modifLieu = entreeClavier.next();
+			acteur.setLieuDeNaissance(modifLieu);
 			CrudActeurs.miseAJourTable(session.getConnection(), acteur);
-
-		} else if (menu3 == 4) {
-
+		} else if (choixSousMenu2 == 4) {
 			System.out.println("Si vous voulez lui changer de sexe, tappez Homme ou Femme :");
-
-			String modif4 = sc.next();
-
-			acteur.setSexe(modif4);
+			String modifSexe = entreeClavier.next();
+			acteur.setSexe(modifSexe);
 			CrudActeurs.miseAJourTable(session.getConnection(), acteur);
-		}
-
-	}
-
-	public void sousMenuFilm() throws SQLException, MalformedURLException, IOException {
-		int menu2 = 0;
-		do {
-			System.out.print("Et maintenant, que voulez vous faire ?");
-			System.out.println(
-					"\n1 | Ajouter un film.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un film.");
-			while (!sc.hasNextInt()) {
-				System.out.println("Entrée incorrect, recommencez");
-				sc.next();
-			}
-			menu2 = sc.nextInt();
-		}
-
-		while (menu2 < 1 || menu2 > 4);
-		sc.nextLine();
-		if (menu2 == 1) {
-			System.out.println("Vous allez créer un nouveau film !");
-			System.out.println("Entrez son titre :");
-
-			String saisieTitre = sc.next();
-
-			Film film = Requete.detailFilm(Requete.idFilm(saisieTitre));
-			CrudFilms.creationFilm(session.getConnection(), film);
-
-			// TODO si Film inconnu
-
-		} else if (menu2 == 2) {
-			System.out.println("Vous voulez réafficher la table Film. Et bien, la voici :");
-			CrudFilms.afficherTableFilm(session.getConnection());
-
-		} else if (menu2 == 3) {
-			System.out.println("Vous allez maintenant modifier un ou plusieurs paramètres d'un film.");
-			System.out.println("Quel film voulez-vous modifier ? ");
-
-			sousMenuUpdateFilm();
-
-		} else if (menu2 == 4) {
-			System.out.println("Vous avez maintenant la possibilité de supprimer un film.");
-			System.out.println("Quel film voulez-vous supprimer ?\n Entrez son nom :");
-
-			String titreASupp = sc.nextLine();
-
-			Film film = CrudFilms.getFilm(session.getConnection(), titreASupp);
-
-			if (film == null)
-				System.out.println("EERRRRRRRRR");
-			CrudFilms.suppressionFilm(session.getConnection(), film);
-		}
-
-	}
-
-	public void sousMenuUpdateFilm() throws SQLException, MalformedURLException, IOException {
-
-		int menu3 = 0;
-		String titreAModif = sc.nextLine();
-		Film film = CrudFilms.getFilm(session.getConnection(), titreAModif);
-		System.out.println("Quel paramètre voulez-vous modifier ?");
-		System.out.println(
-				" Pour modifier son nom, tappez 1.\n Pour modifier son annee de sortie, tappez 2.\n Pour modifier son genre, tappez 3 !...");
-
-		do {
-
-			while (!sc.hasNextInt()) {
-				System.out.println("Entrée incorrect, recommencez");
-				sc.next();
-			}
-			menu3 = sc.nextInt();
-		}
-
-		while (menu3 < 1 || menu3 > 3);
-		sc.nextLine();
-
-		if (menu3 == 1) {
-			System.out.println("Comment voulez-vous l'appeler ?");
-
-			String modifTitre = sc.nextLine();
-
-			film.setTitre(modifTitre);
-			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
-
-		} else if (menu3 == 2) {
-			System.out.println("Quand voulez vous qu'il soit sorti ?");
-
-			String modifAnnee = sc.next();
-
-			film.setAnnee(modifAnnee);
-			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
-
-		} else if (menu3 == 3) {
-			System.out.println("De quel genre voulez vous qu'il soit ? ");
-
-			String modifGenre = sc.next();
-
-			film.setGenre(modifGenre);
-			CrudFilms.miseAJourTableFilm(session.getConnection(), film);
-
-		}
-
+		} 
 	}
 }
+
