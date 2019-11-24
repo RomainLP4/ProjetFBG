@@ -30,6 +30,12 @@
 
     La navigation dans les menu se fait avec le clavier numérique (1,2,3,4).
 
+
+## API Utilisée:
+L'API utilisé içi est celle de IMDB. Elle nous permet de trouvé les films et les acteurs répertoriés pour les ajouter dans la base de données.
+Nous utilisons une requête pour obtenir l'ID d'un acteur ou d'un film, celui ci nous servant par la suite a une seconde requête pour obtenir la liste détaillé des informations que nous souhaitons utilisés.
+Et une autre requête nous permet de récupérer la liste de films dans lesquelles un acteur a joué.
+
 ## MCD et MLD du projet
 
     MCD
@@ -38,6 +44,4 @@
     MLD
 ![](https://nsa40.casimages.com/img/2019/11/20/191120102039233887.png)
 
-## Exemple
 
-// TODO Inserer des screenshots du programme.
