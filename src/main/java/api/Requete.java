@@ -68,7 +68,7 @@ public class Requete {
 
 		String sexe;
 		String urlActorDetail = "https://api.themoviedb.org/3/person/" + actorID + "?api_key=" + IMDB_KEY
-				+ "&language=en-US";
+				+ "";
 
 		String jsonText = IOUtils.toString(new URL(urlActorDetail), Charset.forName("UTF-8"));
 		writeJson(jsonText);
