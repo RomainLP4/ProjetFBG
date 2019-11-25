@@ -95,7 +95,7 @@ public class MenuFilm
 			
 		} else if (choixMenu2 == 2) { // Choix saisie d'une nouvelle date (YYYY-MM-DD)
 			System.out.println("Quand voulez vous qu'il soit sorti ?(Format : YYYY-MM-DD)");
-			String modifAnnee = entreeClavierTexte.nextLine(); // Saisie clavier de l'utilisateur
+			String modifAnnee = entreeClavierTexte.nextLine(); // Saisie clavier de l'utilisateur 
 			Film filmModif = CrudFilms.getFilm(session.getConnection(), titreAModif);
 			filmModif.setAnnee(modifAnnee);
 			CrudFilms.miseAJourTableFilm(session.getConnection(), filmModif);

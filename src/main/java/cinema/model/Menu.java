@@ -110,7 +110,7 @@ public class Menu
 		}
 		while (choixSousMenu2 < 1 || choixSousMenu2 > 4) ;// Jusqu'à ce que l'utilisateur choisisse entre 1 et 4
 		
-		if (choixSousMenu2 == 1) { // Choix saisie du nom du nouvel acteur
+		if (choixSousMenu2 == 1) { // Choix saisie du nom du nouvel acteur 
 			System.out.println("Comment voulez-vous l'appeler ?");
 			String saisieNom = entreeClavierTexte.nextLine(); // Saisie clavier de l'utilisateur
 			Acteur acteurModif = CrudActeurs.getActeur(session.getConnection(), acteurAModif);

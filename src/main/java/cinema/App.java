@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 
-public class App
+public class App 
 {
 
 	public static void main(String[] args) throws SQLException, MalformedURLException, IOException 
