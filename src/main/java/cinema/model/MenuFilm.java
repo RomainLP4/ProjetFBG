@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import api.Requete;
-import jdbc.CrudActeurs;
 import jdbc.CrudFilms;
 import jdbc.Session;
 
