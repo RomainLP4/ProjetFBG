@@ -19,7 +19,7 @@ public class CrudActeurs {
 		int colonneNum = resultAutoReference.getColumnCount();
 
 		while (resultat.next()) {
-			for (int ligne = 1; ligne < colonneNum; ligne++) {
+			for (int ligne = 1; ligne <= colonneNum; ligne++) {
 				String valeurColonne = resultat.getString(ligne);
 				
 				System.out.print(MessageFormat.format("<{0}>\t\t", valeurColonne));

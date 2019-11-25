@@ -1,11 +1,11 @@
 package cinema;
 
-import cinema.model.Menu;
-import cinema.model.MenuFilm;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
+
+import menu.Menu;
+import menu.MenuFilm;
 // classe du main
 public class App 
 {

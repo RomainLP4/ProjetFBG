@@ -1,4 +1,4 @@
-package cinema.model;
+package menu;
 
 import jdbc.CrudActeurs;
 import jdbc.CrudFilms;
@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 import api.Requete;
+import cinema.model.Acteur;
 
 public class Menu
 {

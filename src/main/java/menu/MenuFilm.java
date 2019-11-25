@@ -1,4 +1,4 @@
-package cinema.model;
+package menu;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import api.Requete;
+import cinema.model.Film;
 import jdbc.CrudFilms;
 import jdbc.Session;
 
