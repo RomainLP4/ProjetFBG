@@ -100,7 +100,7 @@ public class Menu
 	{
 		System.out.println(sousMenu2); // Affichage du 2ème menu
 		// Boucle si l'utilisateur entre un charactère hors champs
-		do 
+		do  
 		{
 			while(!entreeClavierInt.hasNextInt())
 			{

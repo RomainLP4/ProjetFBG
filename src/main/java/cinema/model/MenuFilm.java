@@ -10,7 +10,7 @@ import jdbc.CrudActeurs;
 import jdbc.CrudFilms;
 import jdbc.Session;
 
-public class MenuFilm 
+public class MenuFilm  
 {
 	Session session = new Session();
 	Scanner entreeClavierInt = new Scanner(System.in); // Choix utilisateur destiné au menu(entier)

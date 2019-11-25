@@ -13,7 +13,7 @@ public class App
 	public static void main(String[] args) throws SQLException, MalformedURLException, IOException 
 	{
 		Menu menuActeur = new Menu();
-		MenuFilm menuFilm = new MenuFilm();
+		MenuFilm menuFilm = new MenuFilm(); 
 		System.out.println("Bonjour, quelle table voulez vous afficher?");
 		System.out.println(Menu.menuPrincipal);		
 		menuActeur.menuGeneral();

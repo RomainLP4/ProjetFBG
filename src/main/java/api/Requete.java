@@ -39,7 +39,7 @@ public class Requete {
 		String jsonText = IOUtils.toString(new URL(urlDetailFilm), Charset.forName("UTF-8"));
 		writeJson(jsonText);
 
-		JSONObject jsonComplet = new JSONObject(jsonText);
+		JSONObject jsonComplet = new JSONObject(jsonText); 
 		String date = jsonComplet.getString("release_date");
 		JSONArray genre1 = jsonComplet.getJSONArray("genres");
 		String genre = (String) genre1.getJSONObject(0).get("name");
