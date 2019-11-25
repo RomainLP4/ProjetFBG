@@ -19,7 +19,6 @@ public class CrudFilms {
 		ResultSet resultat = etat.executeQuery();
 		Film film = null;
 		while (resultat.next()) {
-			System.out.println("i'm here");
 			int idf = resultat.getInt("idf");
 			String titres = resultat.getString("Titre");
 			String annee = resultat.getString("Annee");
@@ -66,7 +65,6 @@ public class CrudFilms {
 			etat.close();
 
 		} catch (SQLException e) {
-			System.out.println("ERREUR ! ");
 			e.printStackTrace();
 		}
 	}

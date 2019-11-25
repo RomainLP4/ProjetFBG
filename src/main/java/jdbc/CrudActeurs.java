@@ -21,7 +21,7 @@ public class CrudActeurs {
 		while (resultat.next()) {
 			for (int ligne = 1; ligne < colonneNum; ligne++) {
 				String valeurColonne = resultat.getString(ligne);
-				String nomColonne = resultAutoReference.getColumnName(ligne);
+				
 				System.out.print(MessageFormat.format("<{0}>\t\t", valeurColonne));
 			}
 			System.out.println();
@@ -64,7 +64,7 @@ public class CrudActeurs {
 			etat.executeUpdate();
 			etat.close();
 		} catch (SQLException e) {
-			//System.out.println("ERREUR ! ");
+			
 			e.printStackTrace();
 		}
 	}
