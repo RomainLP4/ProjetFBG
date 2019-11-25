@@ -49,7 +49,7 @@ public class CrudActeurs {
 	}
 
 	// CREATE ok
-	public static void creationActeur(Connection connect, cinema.model.Acteur nvActeur) {
+	public static void creationActeur(Connection connect, Acteur nvActeur) {
 		PreparedStatement etat;
 		String requete = "insert into cinema.acteur values(?, ?, ?, ?, ?)";
 		try {
@@ -64,7 +64,7 @@ public class CrudActeurs {
 			etat.executeUpdate();
 			etat.close();
 		} catch (SQLException e) {
-			System.out.println("ERREUR ! ");
+			//System.out.println("ERREUR ! ");
 			e.printStackTrace();
 		}
 	}
