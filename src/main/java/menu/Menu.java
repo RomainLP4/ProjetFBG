@@ -73,18 +73,18 @@ public class Menu
 			System.out.println("Vous avez ajouté " + saisieNom);
 			break;
 			// TODO si acteur inconnu
-		case 2 : // choix affichage de la table acteur depuis le tableau SQL
+		case 2 : // Choix affichage de la table acteur depuis le tableau SQL
 			System.out.println("Vous voulez réafficher la table Acteur. Et bien, la voici :");
 			CrudActeurs.afficherTable(session.getConnection());	
 			break;		
-		case 3 : // choix modification de parametres dans le tableau SQL
+		case 3 : // Choix modification de parametres dans le tableau SQL
 			System.out.println("Vous allez maintenant modifier un ou plusieurs paramètres d'un acteur.");
 			System.out.print("Quel acteur ou actrice voulez-vous modifier ?\nEntrez son prénom et son nom :");
 			acteurAModif = entreeClavierTexte.nextLine();
 			System.out.println("vous avez choisi de modifier " + acteurAModif);
 			sousMenuUpdateActeur();
 			break;			
-		case 4 : // choix suppression d'un acteur dans le tableau SQL
+		case 4 : // Choix suppression d'un acteur dans le tableau SQL
 			System.out.println("Vous avez maintenant la possibilité de supprimer un acteur.");
 			System.out.print("Quel acteur ou actrice voulez-vous supprimer ?\n Entrez son prénom et son nom :");			
 			String acteurASupp = entreeClavierTexte.nextLine();
@@ -92,16 +92,15 @@ public class Menu
 			CrudActeurs.suppressionDonnee(session.getConnection(), acteurSupp);
 			System.out.println("Vous avez supprimé : " + acteurASupp);
 			break;
-		case 5 : // choix affichage de la liste des films joués par l'acteur demandé
+		case 5 : // Choix affichage de la liste des films joués par l'acteur demandé
 			System.out.println("De quel acteur ou actrice voulez-vous voir les films ?\n Entrez son prénom et son nom :");
 			String filmActeur = entreeClavierTexte.nextLine();
 			Requete.actorFilm(Requete.acteur(filmActeur));
 			break;
-		case 6 : // choix retour au menu principal
-			System.out.println(menuPrincipal);
-			menuGeneral();
+		case 6 : // Choix retour au menu principal
+			System.out.println("Bonjour, quelle table voulez vous afficher?");
 			break;
-		case 7 : //choix sortie du programme
+		case 7 : //Choix sortie du programme
 			System.out.println("Au revoir, merci de votre visite !");
 			System.exit(1);
 		}
