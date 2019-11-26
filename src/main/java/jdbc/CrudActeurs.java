@@ -22,7 +22,7 @@ public class CrudActeurs {
 			for (int ligne = 1; ligne <= colonneNum; ligne++) {
 				String valeurColonne = resultat.getString(ligne);
 				
-				System.out.print(MessageFormat.format("<{0}>\t\t", valeurColonne));
+				System.out.print(String.format("%30s|", valeurColonne));
 			}
 			System.out.println();
 		}
