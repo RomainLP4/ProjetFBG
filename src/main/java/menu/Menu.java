@@ -61,7 +61,7 @@ public class Menu
 		    	entreeClavierInt.next();
 		    } choixSousMenu1 = entreeClavierInt.nextInt();
 		}
-		while (choixSousMenu1 < 1 || choixSousMenu1 > 6) ; // Jusqu'à ce que l'utilisateur choisisse entre 1 et 5
+		while (choixSousMenu1 < 1 || choixSousMenu1 > 6) ; // Jusqu'à ce que l'utilisateur choisisse entre 1 et 6
 		
 		switch (choixSousMenu1) {
 		case 1 : // Choix ajout d'un nouvel acteur dans le tableau SQL
