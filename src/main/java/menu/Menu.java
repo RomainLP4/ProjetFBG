@@ -19,7 +19,7 @@ public class Menu
 	Scanner entreeClavierTexte = new Scanner (System.in); // Choix utilisateur destiné aux noms, genres et dates(String)
 	public String acteurAModif; // Déclaration variable de classe afin de la rappeler n'importe où
 	public static String menuPrincipal = " 1. Acteur\n 2. Film\nVotre choix :";
-	public static String sousMenu1 = "Et maintenant, que voulez vous faire ?\n1 | Ajouter un acteur ou une actrice.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un acteur ou une actrice. \n5 | Afficher les films d'un acteur ou d'une actrice. \n6 | Sortir.";
+	public static String sousMenu1 = "Et maintenant, que voulez vous faire ?\n1 | Ajouter un acteur ou une actrice.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un acteur ou une actrice. \n5 | Afficher les films d'un acteur ou d'une actrice. \n6 | Menu principal. \n7 | Sortir.";
 	public static String sousMenu2 = "Quel paramètre voulez-vous modifier ?\n Pour modifier son nom, tapez 1.\n Pour modifier sa date de naissance, tapez 2.\n Pour modifier son lieu de naissance, tapez 3. \n Pour lui changer de sexe, tapez 4 !...";
 	public static int choixMenuGeneral;
 	public static int choixSousMenu1;
@@ -61,7 +61,7 @@ public class Menu
 		    	entreeClavierInt.next();
 		    } choixSousMenu1 = entreeClavierInt.nextInt();
 		}
-		while (choixSousMenu1 < 1 || choixSousMenu1 > 6) ; // Jusqu'à ce que l'utilisateur choisisse entre 1 et 6
+		while (choixSousMenu1 < 1 || choixSousMenu1 > 7) ; // Jusqu'à ce que l'utilisateur choisisse entre 1 et 7
 		
 		switch (choixSousMenu1) {
 		case 1 : // Choix ajout d'un nouvel acteur dans le tableau SQL
@@ -97,7 +97,11 @@ public class Menu
 			String filmActeur = entreeClavierTexte.nextLine();
 			Requete.actorFilm(Requete.acteur(filmActeur));
 			break;
-		case 6 : //choix sortie du programme
+		case 6 : // choix retour au menu principal
+			System.out.println(menuPrincipal);
+			menuGeneral();
+			break;
+		case 7 : //choix sortie du programme
 			System.out.println("Au revoir, merci de votre visite !");
 			System.exit(1);
 		}

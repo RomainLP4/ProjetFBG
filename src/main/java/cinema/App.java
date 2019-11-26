@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 
-
 import menu.Menu;
 import menu.MenuFilm;
 // classe du main
@@ -27,7 +26,7 @@ public class App
 				System.out.println("Votre choix :");
 				menuActeur.sousMenuActeur();
 			}
-			while(MenuFilm.choixMenu1 < 1 || MenuFilm.choixMenu1 > 5); // condition toujours vrai(boucle infinie)
+			while(MenuFilm.choixMenu1 < 1); // condition toujours vrai(boucle infinie)
 		} else { // Sinon redirection vers la partie film
 			// Boucle de la partie film avec possibilité de sortie via le menu
 			do 
@@ -36,7 +35,7 @@ public class App
 				System.out.println("Votre choix :");
 				menuFilm.sousMenuFilm();
 			}
-			while (Menu.choixSousMenu1 < 1 || Menu.choixSousMenu1 > 5); // condition toujours vrai(boucle infinie)
+			while (Menu.choixSousMenu1 < 1); // condition toujours vrai(boucle infinie)
 		}
 	}
 } // Fin de la classe main
