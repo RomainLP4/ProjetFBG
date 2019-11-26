@@ -92,7 +92,7 @@ public class Menu
 			CrudActeurs.suppressionDonnee(session.getConnection(), acteurSupp);
 			System.out.println("Vous avez supprimé : " + acteurASupp);
 			break;
-		case 5 :
+		case 5 : // choix affichage de la liste des films joués par l'acteur demandé
 			System.out.println("De quel acteur ou actrice voulez-vous voir les films ?\n Entrez son prénom et son nom :");
 			String filmActeur = entreeClavierTexte.nextLine();
 			Requete.actorFilm(Requete.acteur(filmActeur));
