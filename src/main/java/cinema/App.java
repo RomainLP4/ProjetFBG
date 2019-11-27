@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import menu.Menu;
 import menu.MenuFilm;
-// classe du main
+// Classe du main
 public class App 
 {
 	public static void main(String[] args) throws SQLException, MalformedURLException, IOException 

@@ -17,7 +17,7 @@ public class Menu
 	Session session = new Session();
 	Scanner entreeClavierInt = new Scanner(System.in); // Choix utilisateur destiné au menu(entier)
 	Scanner entreeClavierTexte = new Scanner (System.in); // Choix utilisateur destiné aux noms, genres et dates(String)
-	public String acteurAModif; // Déclaration variable de classe afin de la rappeler n'importe où
+	public static String acteurAModif; // Déclaration variable de classe afin de la rappeler n'importe où
 	public static String menuPrincipal = " 1. Acteur\n 2. Film\nVotre choix :";
 	public static String sousMenu1 = "Et maintenant, que voulez vous faire ?\n1 | Ajouter un acteur ou une actrice.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un acteur ou une actrice. \n5 | Afficher les films d'un acteur ou d'une actrice. \n6 | Menu principal. \n7 | Sortir.";
 	public static String sousMenu2 = "Quel paramètre voulez-vous modifier ?\n Pour modifier son nom, tapez 1.\n Pour modifier sa date de naissance, tapez 2.\n Pour modifier son lieu de naissance, tapez 3. \n Pour lui changer de sexe, tapez 4 !...";
