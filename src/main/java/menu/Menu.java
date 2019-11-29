@@ -95,7 +95,7 @@ public class Menu
 		case 5 : // Choix affichage de la liste des films joués par l'acteur demandé
 			System.out.println("De quel acteur ou actrice voulez-vous voir les films ?\n Entrez son prénom et son nom :");
 			String filmActeur = entreeClavierTexte.nextLine();
-			//Acteur acteurFilm = Requete.actorFilm(Requete.acteur(filmActeur));
+			Requete.actorFilm(Requete.acteur(filmActeur));
 			break;
 		case 6 : // Choix retour au menu principal
 			System.out.println("Bonjour, quelle table voulez vous afficher?");
