@@ -95,7 +95,7 @@ public class Menu
 		case 5 :
 			System.out.println("De quel acteur ou actrice voulez-vous voir les films ?\n Entrez son prénom et son nom :");
 			String filmActeur = entreeClavierTexte.nextLine();
-			Requete.actorFilm(Requete.acteur(filmActeur));
+			//Acteur acteurFilm = Requete.actorFilm(Requete.acteur(filmActeur));
 			break;
 		case 6 : //choix sortie du programme
 			System.out.println("Au revoir, merci de votre visite !");
