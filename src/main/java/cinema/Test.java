@@ -1,5 +1,4 @@
 package cinema;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
