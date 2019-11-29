@@ -2,7 +2,6 @@ package cinema;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
-
 import api.Requete;
 import cinema.model.Acteur;
 import cinema.model.Film;
