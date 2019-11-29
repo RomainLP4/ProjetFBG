@@ -16,7 +16,7 @@ public class MenuFilm
 	Scanner entreeClavierInt = new Scanner(System.in); // Choix utilisateur destiné au menu(entier)
 	Scanner entreeClavierTexte = new Scanner(System.in); // Choix utilisateur destiné aux noms, genres et dates(String)
 	public String titreAModif; // Déclaration variable de classe afin de la rappeler n'importe où
-	public static String menu1 = "Et maintenant, que voulez vous faire ?\n1 | Ajouter un film.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un film. \n5 | Sortir.";
+	public static String menu1 = "Et maintenant, que voulez vous faire ? \n1 | Ajouter un film. \n2 | Réafficher la table. \n3 | Modifier un paramètre. \n4 | Supprimer un film. \n5 | Menu principal. \n6 | Sortir.";
 	public static String menu2 = "Quel paramètre voulez-vous modifier ?\n Pour modifier son nom, tappez 1.\n Pour modifier son annee de sortie, tappez 2.\n Pour modifier son genre, tappez 3 !...";
 	public static int choixMenu1;
 	public static int choixMenu2;
@@ -35,37 +35,40 @@ public class MenuFilm
 			} 
 			choixMenu1 = entreeClavierInt.nextInt();
 		}
-		while(choixMenu1 < 1 || choixMenu1 > 5); // Jusqu'à ce que l'utilisateur choisisse entre 1 et 5
+		while(choixMenu1 < 1 || choixMenu1 > 6); // Jusqu'à ce que l'utilisateur choisisse entre 1 et 5
 
 		switch (choixMenu1) { 
-			case 1 : // choix ajout d'un nouveau titre dans le tableau SQL
-			System.out.print("Vous voulez ajouter un nouveau film !\nEntrez son titre :");
-			String saisieTitre = entreeClavierTexte.nextLine();
-			Film filmCree = Requete.detailFilm(Requete.idFilm(saisieTitre));
-			CrudFilms.creationFilm(session.getConnection(), filmCree);
-			System.out.println("Nouveau film cree :" + saisieTitre);
-			break;
-			case 2 : // choix affichage de la table film depuis le tableau SQL
-			System.out.println("Vous avez demandé d'afficher la table Film");
-			CrudFilms.afficherTableFilm(session.getConnection());
-			break;
-			case 3 : // choix modification de paramètres dans le tableau SQL
-			System.out.print("Vous allez maintenant modifier un ou plusieurs paramètres d'un film.\n Quel film voulez-vous modifier ?");			
-			titreAModif = entreeClavierTexte.nextLine();
-			System.out.println("vous avez choisi de modifier " + titreAModif);
-			sousMenuFilmParametre();
-			break;
-			case 4 : // choix suppression d'un titre dans le tableau SQL
-			System.out.println("Vous avez maintenant la possibilité de supprimer un film.");
-			System.out.println("Quel film voulez-vous supprimer ?\n Entrez son nom :");
-			String titreASupp = entreeClavierTexte.nextLine();
-			Film filmSupp = Requete.detailFilm(Requete.idFilm(titreASupp));
-			CrudFilms.suppressionFilm(session.getConnection(), filmSupp);
-			System.out.println("Vous avez supprimé " + titreASupp);
-			break;
-			case 5 : //choix sortie du programme
-			System.out.println("Au revoir, merci de votre visite !");
-			System.exit(1);
+			case 1 : // Choix ajout d'un nouveau titre dans le tableau SQL
+				System.out.print("Vous voulez ajouter un nouveau film !\nEntrez son titre :");
+				String saisieTitre = entreeClavierTexte.nextLine();
+				Film filmCree = Requete.detailFilm(Requete.idFilm(saisieTitre));
+				CrudFilms.creationFilm(session.getConnection(), filmCree);
+				System.out.println("Nouveau film cree :" + saisieTitre);
+				break;
+			case 2 : // Choix affichage de la table film depuis le tableau SQL
+				System.out.println("Vous avez demandé d'afficher la table Film");
+				CrudFilms.afficherTableFilm(session.getConnection());
+				break;
+			case 3 : // Choix modification de paramètres dans le tableau SQL
+				System.out.print("Vous allez maintenant modifier un ou plusieurs paramètres d'un film.\n Quel film voulez-vous modifier ?");			
+				titreAModif = entreeClavierTexte.nextLine();
+				System.out.println("vous avez choisi de modifier " + titreAModif);
+				sousMenuFilmParametre();
+				break;
+			case 4 : // Choix suppression d'un titre dans le tableau SQL
+				System.out.println("Vous avez maintenant la possibilité de supprimer un film.");
+				System.out.println("Quel film voulez-vous supprimer ?\n Entrez son nom :");
+				String titreASupp = entreeClavierTexte.nextLine();
+				Film filmSupp = Requete.detailFilm(Requete.idFilm(titreASupp));
+				CrudFilms.suppressionFilm(session.getConnection(), filmSupp);
+				System.out.println("Vous avez supprimé " + titreASupp);
+				break;
+			case 5 : // Choix retour au menu principal
+				System.out.println("Bonjour, quelle table voulez vous afficher?");
+				break;
+			case 6 : //Choix sortie du programme
+				System.out.println("Au revoir, merci de votre visite !");
+				System.exit(1);
 		}
 	}
 	

@@ -17,9 +17,9 @@ public class Menu
 	Session session = new Session();
 	Scanner entreeClavierInt = new Scanner(System.in); // Choix utilisateur destiné au menu(entier)
 	Scanner entreeClavierTexte = new Scanner (System.in); // Choix utilisateur destiné aux noms, genres et dates(String)
-	public String acteurAModif; // Déclaration variable de classe afin de la rappeler n'importe où
+	public static String acteurAModif; // Déclaration variable de classe afin de la rappeler n'importe où
 	public static String menuPrincipal = " 1. Acteur\n 2. Film\nVotre choix :";
-	public static String sousMenu1 = "Et maintenant, que voulez vous faire ?\n1 | Ajouter un acteur ou une actrice.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un acteur ou une actrice. \n5 | Afficher les films d'un acteur ou d'une actrice. \n6 | Sortir.";
+	public static String sousMenu1 = "Et maintenant, que voulez vous faire ?\n1 | Ajouter un acteur ou une actrice.\n2 | Réafficher la table.\n3 | Modifier un paramètre. \n4 | Supprimer un acteur ou une actrice. \n5 | Afficher les films d'un acteur ou d'une actrice. \n6 | Menu principal. \n7 | Sortir.";
 	public static String sousMenu2 = "Quel paramètre voulez-vous modifier ?\n Pour modifier son nom, tapez 1.\n Pour modifier sa date de naissance, tapez 2.\n Pour modifier son lieu de naissance, tapez 3. \n Pour lui changer de sexe, tapez 4 !...";
 	public static int choixMenuGeneral;
 	public static int choixSousMenu1;
@@ -61,7 +61,7 @@ public class Menu
 		    	entreeClavierInt.next();
 		    } choixSousMenu1 = entreeClavierInt.nextInt();
 		}
-		while (choixSousMenu1 < 1 || choixSousMenu1 > 6) ; // Jusqu'à ce que l'utilisateur choisisse entre 1 et 5
+		while (choixSousMenu1 < 1 || choixSousMenu1 > 7) ; // Jusqu'à ce que l'utilisateur choisisse entre 1 et 7
 		
 		switch (choixSousMenu1) {
 		case 1 : // Choix ajout d'un nouvel acteur dans le tableau SQL
@@ -73,18 +73,18 @@ public class Menu
 			System.out.println("Vous avez ajouté " + saisieNom);
 			break;
 			// TODO si acteur inconnu
-		case 2 : // choix affichage de la table acteur depuis le tableau SQL
+		case 2 : // Choix affichage de la table acteur depuis le tableau SQL
 			System.out.println("Vous voulez réafficher la table Acteur. Et bien, la voici :");
 			CrudActeurs.afficherTable(session.getConnection());	
 			break;		
-		case 3 : // choix modification de parametres dans le tableau SQL
+		case 3 : // Choix modification de parametres dans le tableau SQL
 			System.out.println("Vous allez maintenant modifier un ou plusieurs paramètres d'un acteur.");
 			System.out.print("Quel acteur ou actrice voulez-vous modifier ?\nEntrez son prénom et son nom :");
 			acteurAModif = entreeClavierTexte.nextLine();
 			System.out.println("vous avez choisi de modifier " + acteurAModif);
 			sousMenuUpdateActeur();
 			break;			
-		case 4 : // choix suppression d'un acteur dans le tableau SQL
+		case 4 : // Choix suppression d'un acteur dans le tableau SQL
 			System.out.println("Vous avez maintenant la possibilité de supprimer un acteur.");
 			System.out.print("Quel acteur ou actrice voulez-vous supprimer ?\n Entrez son prénom et son nom :");			
 			String acteurASupp = entreeClavierTexte.nextLine();
@@ -92,12 +92,15 @@ public class Menu
 			CrudActeurs.suppressionDonnee(session.getConnection(), acteurSupp);
 			System.out.println("Vous avez supprimé : " + acteurASupp);
 			break;
-		case 5 :
+		case 5 : // Choix affichage de la liste des films joués par l'acteur demandé
 			System.out.println("De quel acteur ou actrice voulez-vous voir les films ?\n Entrez son prénom et son nom :");
 			String filmActeur = entreeClavierTexte.nextLine();
 			//Acteur acteurFilm = Requete.actorFilm(Requete.acteur(filmActeur));
 			break;
-		case 6 : //choix sortie du programme
+		case 6 : // Choix retour au menu principal
+			System.out.println("Bonjour, quelle table voulez vous afficher?");
+			break;
+		case 7 : //Choix sortie du programme
 			System.out.println("Au revoir, merci de votre visite !");
 			System.exit(1);
 		}

@@ -6,10 +6,9 @@ import java.sql.SQLException;
 
 import menu.Menu;
 import menu.MenuFilm;
-// classe du main
+// Classe du main
 public class App 
 {
-
 	public static void main(String[] args) throws SQLException, MalformedURLException, IOException 
 	{
 		Menu menuActeur = new Menu(); // Nouvelle instance acteur
@@ -25,8 +24,13 @@ public class App
 				System.out.println(Menu.sousMenu1);
 				System.out.println("Votre choix :");
 				menuActeur.sousMenuActeur();
+				if (Menu.choixSousMenu1 == 6) // Choix affichage des tableaux acteurs ou film
+				{
+					System.out.println(Menu.menuPrincipal);
+					menuActeur.menuGeneral();
+				}
 			}
-			while(MenuFilm.choixMenu1 < 1 || MenuFilm.choixMenu1 > 5); // condition toujours vrai(boucle infinie)
+			while(MenuFilm.choixMenu1 < 1); // Condition toujours vrai(boucle infinie)
 		} else { // Sinon redirection vers la partie film
 			// Boucle de la partie film avec possibilité de sortie via le menu
 			do 
@@ -34,8 +38,13 @@ public class App
 				System.out.println(MenuFilm.menu1);
 				System.out.println("Votre choix :");
 				menuFilm.sousMenuFilm();
+				if (MenuFilm.choixMenu1 == 5) // Choix affichage des tableaux acteurs ou film
+				{
+					System.out.println(Menu.menuPrincipal);
+					menuActeur.menuGeneral();
+				}
 			}
-			while (Menu.choixSousMenu1 < 1 || Menu.choixSousMenu1 > 5); // condition toujours vrai(boucle infinie)
+			while (Menu.choixSousMenu1 < 1); // Condition toujours vrai(boucle infinie)
 		}
 	}
 } // Fin de la classe main
