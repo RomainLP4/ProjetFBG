@@ -30,7 +30,7 @@ public class App
 					menuActeur.menuGeneral();
 				}
 			}
-			while(MenuFilm.choixMenu1 < 1); // Condition toujours vrai(boucle infinie)
+			while(true); // Condition toujours vrai(boucle infinie)
 		} else { // Sinon redirection vers la partie film
 			// Boucle de la partie film avec possibilité de sortie via le menu
 			do 
@@ -44,7 +44,7 @@ public class App
 					menuActeur.menuGeneral();
 				}
 			}
-			while (Menu.choixSousMenu1 < 1); // Condition toujours vrai(boucle infinie)
+			while (true); // Condition toujours vrai(boucle infinie)
 		}
 	}
 } // Fin de la classe main
